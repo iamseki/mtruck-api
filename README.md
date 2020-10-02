@@ -1,5 +1,22 @@
 # MTruck API
 
+**Informaçes sobre o projeto**:
+
+- Versão do Java: `1.8`
+- Gerenciador de pacotes: `Maven`
+- Ambiente de desenvolvimento: `NetBeans v12.0`
+
+## Rodando a API localmente :book:
+
+Para rodar a API localmente em **`localhost:8080`**
+
+- Windows
+
+  No diretório raíz do projeto `cd api` e execute : `mvnw spring-boot:run`
+
+- Linux/Mac
+
+  No diretório raíz do projeto `cd api` e execute : `./mvnw spring-boot:run`
 
 ## Acesso à documentação :books:
 
