@@ -12,11 +12,11 @@ Para rodar a API localmente em **`localhost:8080`**
 
 - Windows
 
-  No diretório raíz do projeto `cd api` e execute : `mvnw spring-boot:run`
+  No diretório raíz do projeto execute : `mvnw spring-boot:run`
 
 - Linux/Mac
 
-  No diretório raíz do projeto `cd api` e execute : `./mvnw spring-boot:run`
+  No diretório raíz do projeto execute : `./mvnw spring-boot:run`
 
 ## Acesso à documentação :books:
 
