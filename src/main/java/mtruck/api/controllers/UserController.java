@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package mtruck.api;
+package mtruck.api.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,36 +31,36 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 @RestController
 public class UserController {
-    
+
     @GetMapping
     List<User> listar() {
-       List<User> users = new ArrayList<>();
-       
-       return users;
+        List<User> users = new ArrayList<>();
+
+        return users;
     }
-    
+
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
-    void cadastrar(@RequestBody User user){
-        
+    void cadastrar(@RequestBody User user) {
+
         UsuarioService svc = new UsuarioService();
         System.out.println(user.getNome());
         svc.salvar(user);
     }
-    
+
     @GetMapping("/{id}")
     User pesquisar(@PathVariable UUID id) {
         User user = new User();
-                
+
         return user;
     }
-    
+
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     void editar(@RequestBody User user, @PathVariable UUID id) {
-        
+
     }
-    
+
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     void deletar(@PathVariable UUID id) {
