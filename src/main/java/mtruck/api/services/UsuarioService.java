@@ -6,6 +6,7 @@
 package mtruck.api.services;
 
 import mtruck.api.daos.DAO;
+import mtruck.api.entities.Auditoria;
 import mtruck.api.entities.User;
 
 /**
@@ -14,13 +15,20 @@ import mtruck.api.entities.User;
  */
 public class UsuarioService {
     
-    private final DAO<User> produtoDAO ;
+    private final DAO<User> usuarioDAO ;
     
     public UsuarioService(DAO dao){
-        this.produtoDAO = dao;
+        this.usuarioDAO = dao;
     }
     
+    public UsuarioService(){
+        this.usuarioDAO = null;
+    };
+    
     public void salvar(User u){
+        
+        Auditoria a = new Auditoria("Inclusão de usuário");
+        AuditoriaService.getInstancia().adicionaAuditoria(a);
         
         // Salvar usuário no banco
         // blabla e auditar se der certo

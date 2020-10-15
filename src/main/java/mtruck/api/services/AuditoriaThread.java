@@ -5,6 +5,8 @@
  */
 package mtruck.api.services;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mtruck.api.daos.DAO;
 import mtruck.api.entities.Auditoria;
 
@@ -21,13 +23,26 @@ public class AuditoriaThread extends Thread{
         this.auditoriaDAO = dao;
     }
     
-    public void salvar(){
-        Auditoria a = AuditoriaService.getInstancia().retiraObjAuditoria();
-        
-        this.auditoriaDAO.salvar(a);
+    @Override
+    public void run() {
+        setStatus(true);
+        while (status) {
+            try {
+                Auditoria a = AuditoriaService.getInstancia().retiraObjAuditoria();
+                if(a == null) {
+                    AuditoriaService.getInstancia().desativar();
+                    break;
+                }
+
+                this.auditoriaDAO.salvar(a);
+                Thread.sleep(1);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(AuditoriaThread.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
-    void setStatus(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setStatus(boolean value) {
+        status = value;
     }
 }

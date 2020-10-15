@@ -9,9 +9,8 @@ package mtruck.api;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import mtruck.api.entities.Auditoria;
 import mtruck.api.entities.User;
-import mtruck.api.services.AuditoriaService;
+import mtruck.api.services.UsuarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,8 +42,10 @@ public class UserController {
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     void cadastrar(@RequestBody User user){
-        Auditoria a = new Auditoria("Inclusão de usuário");
-        AuditoriaService.getInstancia().adicionaAuditoria(a);
+        
+        UsuarioService svc = new UsuarioService();
+        System.out.println(user.getNome());
+        svc.salvar(user);
     }
     
     @GetMapping("/{id}")

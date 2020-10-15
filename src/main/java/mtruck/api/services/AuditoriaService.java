@@ -7,8 +7,6 @@ package mtruck.api.services;
 
 
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import mtruck.api.daos.AuditoriaDAO;
 import mtruck.api.entities.Auditoria;
 
@@ -56,16 +54,8 @@ public class AuditoriaService {
     }
     
     void desativar(){
-        if (thread != null) {
-            thread.setStatus(false);
-            try {
-                thread.join(2000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(AuditoriaService.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if (thread.isAlive())
-                thread.interrupt();
-        }
+        thread.setStatus(false);
+        thread = null;
     }
 }
 
