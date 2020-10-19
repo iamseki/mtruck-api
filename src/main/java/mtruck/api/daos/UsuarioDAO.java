@@ -16,43 +16,63 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mtruck.api.entities.Auditoria;
+import mtruck.api.entities.Usuario;
+
 /**
  *
  * @author GERU\christian.seki
  */
-public class AuditoriaDAO implements DAO<Auditoria>{
-    
+public class UsuarioDAO implements DAO<Usuario> {
+
     private final String STRING_CONEXAO = "jdbc:postgresql://localhost/lp2";
     private final String USUARIO = "postgres";
     private final String SENHA = "admin";
-    private final String TABELA = "auditoria"; 
+    private final String TABELA = "usuarios";
 
     @Override
-    public List<Auditoria> listar() {
-        ArrayList<Auditoria> logs = new ArrayList();
+    public List<Usuario> listar() {
+        ArrayList<Usuario> usuarios = new ArrayList();
 
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "SELECT * FROM " + TABELA;
-            System.out.println("[Listar] - SQL: "+ SQL);
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 try (ResultSet rs = stmt.executeQuery()) {
                     while (rs.next()) {
-                        Auditoria a = this.preencheAuditoria(rs);
-                        logs.add(a);
+                        Usuario u = this.preencheUsuario(rs);
+                        usuarios.add(u);
                     }
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(AuditoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return logs;
+        return usuarios;
+    }
+
+    private Usuario preencheUsuario(ResultSet rs) {
+        Usuario u = new Usuario();
+
+        try {
+            u.setId(UUID.fromString(rs.getString("id")));
+            u.setCPF(rs.getString("cpf"));
+            u.setEmail(rs.getString("email"));
+            u.setNome(rs.getString("nome"));
+            u.setSenha(rs.getString("senha"));
+            u.setEmpresa_id(UUID.fromString(rs.getString("empresa_id")));
+            u.setPerfil_id(UUID.fromString(rs.getString("perfil_id")));
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return u;
     }
 
     @Override
-    public void salvar(Auditoria a) {
+    public void salvar(Usuario u) {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO auditoria (descricao)"
-                    + " VALUES('"+a.getDescricao()+"')";
+            String SQL = "INSERT INTO usuarios (nome,cpf,email,senha,empresa_id,perfil_id)"
+                    + " VALUES('" + u.getNome() + "','" + u.getCPF() + "','" + u.getEmail() + "','" 
+                    + u.getSenha() + "','" + u.getEmpresa_id() + "','" + u.getPerfil_id() + "')";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 stmt.execute();
@@ -61,38 +81,26 @@ public class AuditoriaDAO implements DAO<Auditoria>{
             Logger.getLogger(AuditoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private Auditoria preencheAuditoria(ResultSet rs){
-        Auditoria a = new Auditoria();
-        try {
-            a.setId(UUID.fromString(rs.getString("id")));
-            a.setDescricao(rs.getString("descricao"));
-            a.setData_criacao(rs.getDate("data_criacao"));
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return a;
-    }
 
     @Override
-    public Auditoria pesquisar(UUID id) {
-        Auditoria a = new Auditoria();
-        
+    public Usuario pesquisar(UUID id) {
+        Usuario u = new Usuario();
+
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "SELECT * FROM " + TABELA + " WHERE ID='"+id+"'";
-            
-            System.out.println("[Pesquisar] - SQL: "+ SQL);
+            String SQL = "SELECT * FROM " + TABELA + " WHERE ID='" + id + "'";
+
+            System.out.println("[Pesquisar] - SQL: " + SQL);
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()) {
-                        a = this.preencheAuditoria(rs);
-                    }   
+                        u = this.preencheUsuario(rs);
+                    }
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AuditoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return a;
+        return u;
     }
 }
+

@@ -9,7 +9,7 @@ package mtruck.api.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import mtruck.api.entities.User;
+import mtruck.api.entities.Usuario;
 import mtruck.api.services.UsuarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -33,31 +33,31 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping
-    List<User> listar() {
-        List<User> users = new ArrayList<>();
+    List<Usuario> listar() {
+        List<Usuario> users = new ArrayList<>();
 
         return users;
     }
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
-    void cadastrar(@RequestBody User user) {
+    void cadastrar(@RequestBody Usuario user) {
 
-        UsuarioService svc = new UsuarioService();
-        System.out.println(user.getNome());
-        svc.salvar(user);
+     //   UsuarioService svc = new UsuarioService();
+     //   System.out.println(user.getNome());
+     //   svc.salvar(user);
     }
 
     @GetMapping("/{id}")
-    User pesquisar(@PathVariable UUID id) {
-        User user = new User();
+    Usuario pesquisar(@PathVariable UUID id) {
+        Usuario user = new Usuario();
 
         return user;
     }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    void editar(@RequestBody User user, @PathVariable UUID id) {
+    void editar(@RequestBody Usuario user, @PathVariable UUID id) {
 
     }
 

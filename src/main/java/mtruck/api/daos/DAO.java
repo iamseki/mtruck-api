@@ -18,9 +18,5 @@ public interface DAO <T> {
     
     void salvar(T t);
     
-    T pesquisar(UUID id);
-    
-    void deletar(UUID id);
-    
-    void editar(T t);    
+    T pesquisar(UUID id); 
 }

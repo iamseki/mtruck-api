@@ -10,7 +10,7 @@ import java.util.UUID;
  *
  * @author chseki
  */
-public class User {
+public class Usuario {
     private UUID id;
     private UUID perfil_id;
     private UUID empresa_id;
@@ -19,7 +19,7 @@ public class User {
     private String email;
     private String senha;
 
-    public User(UUID id, UUID perfil_id, UUID empresa_id, String nome, String CPF, String email, String senha) {
+    public Usuario(UUID id, UUID perfil_id, UUID empresa_id, String nome, String CPF, String email, String senha) {
         this.id = id;
         this.perfil_id = perfil_id;
         this.empresa_id = empresa_id;
@@ -29,7 +29,7 @@ public class User {
         this.senha = senha;
     }
     
-    public User(){}
+    public Usuario(){}
     
 
     public String getCPF() {
