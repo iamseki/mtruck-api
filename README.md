@@ -35,7 +35,7 @@ Criamos dois serviços que executam a thread responsável pela auditoria das rot
   - [AuditoriaService](./src/main/java/mtruck/api/services/AuditoriaService.java)
   - [AuditoriaThread](src/main/java/mtruck/api/services/AuditoriaThread.java)         
 
->e.g auditoria da rota **[datalog](src/main/java/mtruck/api/services/DatalogService.java)**
+>e.g auditoria do endpoint **[/datalog](src/main/java/mtruck/api/services/DatalogService.java)**
 
 
 ## Acesso à documentação :books:
