@@ -5,6 +5,7 @@
  */
 package mtruck.api.services;
 
+import java.util.List;
 import mtruck.api.daos.DAO;
 import mtruck.api.entities.Auditoria;
 import mtruck.api.entities.Datalog;
@@ -22,7 +23,6 @@ public class DatalogService {
     }
 
     public void salvar(Datalog d) {
-
         Auditoria a = new Auditoria("Inclusão de um Datalog");
         AuditoriaService.getInstancia().adicionaAuditoria(a);
 
@@ -30,5 +30,14 @@ public class DatalogService {
 
         AuditoriaService.getInstancia().ativar();
 
+    }
+
+    public List<Datalog> listar() {
+        Auditoria a = new Auditoria("Listagem de Datalog");
+        AuditoriaService.getInstancia().adicionaAuditoria(a);
+        List<Datalog> logs = this.datalogDAO.listar();
+
+        AuditoriaService.getInstancia().ativar();
+        return logs;
     }
 }

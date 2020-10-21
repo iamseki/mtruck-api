@@ -5,10 +5,13 @@
  */
 package mtruck.api.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import mtruck.api.daos.DatalogDAO;
 import mtruck.api.entities.Datalog;
 import mtruck.api.services.DatalogService;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +25,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/datalog")
 @RestController
 public class DatalogController {
-    
+
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     void salvar(@RequestBody Datalog datalog) {
-           DatalogDAO dao = new DatalogDAO();
-           DatalogService service = new DatalogService(dao);
-           
-           service.salvar(datalog);
+        DatalogDAO dao = new DatalogDAO();
+        DatalogService service = new DatalogService(dao);
+
+        service.salvar(datalog);
+    }
+
+    @GetMapping
+    List<Datalog> listar() {
+        DatalogDAO dao = new DatalogDAO();
+        DatalogService service = new DatalogService(dao);
+        List<Datalog> logs = service.listar();
+
+        return logs;
     }
 }
