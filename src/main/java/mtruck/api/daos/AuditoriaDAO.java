@@ -44,7 +44,7 @@ public class AuditoriaDAO extends DAO<Auditoria>{
         try {
             a.setId(UUID.fromString(rs.getString("id")));
             a.setDescricao(rs.getString("descricao"));
-            a.setData_criacao(rs.getDate("data_criacao"));
+            a.setData_criacao(rs.getTimestamp("data_criacao"));
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
