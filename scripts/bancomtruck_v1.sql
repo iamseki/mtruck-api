@@ -70,5 +70,10 @@ CREATE TABLE usuarios(
 	senha varchar(100) not null
 );
 
+CREATE TABLE auditoria(
+	id uuid primary key default uuid_generate_v4(),
+	descricao varchar not null,
+	data_criacao timestamp default now()
+);
 
 
