@@ -25,7 +25,7 @@ public abstract class DAO<E> {
     final String SENHA = "admin";
     protected String TABELA;
     
-    protected E preencheEntidade(ResultSet rs) {
+    protected E preencheEntidade(ResultSet rs) throws SQLException {
         throw new UnsupportedOperationException("Implementar na classe filha."); //To change body of generated methods, choose Tools | Templates.
     }
 

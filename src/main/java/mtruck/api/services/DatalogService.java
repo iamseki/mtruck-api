@@ -13,6 +13,8 @@ import java.util.logging.Logger;
 import mtruck.api.daos.DAO;
 import mtruck.api.entities.Auditoria;
 import mtruck.api.entities.Datalog;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  *
@@ -26,7 +28,7 @@ public class DatalogService {
         this.datalogDAO = dao;
     }
 
-    public void salvar(Datalog d) {
+    public void salvar(Datalog d) throws ResponseStatusException {
         try {
             Auditoria a = new Auditoria("Inclusão de um Datalog");
             AuditoriaService.getInstancia().adicionaAuditoria(a);
@@ -36,6 +38,7 @@ public class DatalogService {
             AuditoriaService.getInstancia().ativar();
         } catch (SQLException ex) {
             Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage());
         }
     }
 
