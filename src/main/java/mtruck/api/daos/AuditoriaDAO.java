@@ -10,8 +10,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,32 +18,10 @@ import mtruck.api.entities.Auditoria;
  *
  * @author GERU\christian.seki
  */
-public class AuditoriaDAO implements DAO<Auditoria>{
+public class AuditoriaDAO extends DAO<Auditoria>{
     
-    private final String STRING_CONEXAO = "jdbc:postgresql://localhost/lp2";
-    private final String USUARIO = "postgres";
-    private final String SENHA = "admin";
-    private final String TABELA = "auditoria"; 
-
-    @Override
-    public List<Auditoria> listar() {
-        ArrayList<Auditoria> logs = new ArrayList();
-
-        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "SELECT * FROM " + TABELA;
-            System.out.println("[Listar] - SQL: "+ SQL);
-            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
-                try (ResultSet rs = stmt.executeQuery()) {
-                    while (rs.next()) {
-                        Auditoria a = this.preencheAuditoria(rs);
-                        logs.add(a);
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AuditoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return logs;
+    public AuditoriaDAO(){
+        super.TABELA = "auditoria";
     }
 
     @Override
@@ -62,7 +38,8 @@ public class AuditoriaDAO implements DAO<Auditoria>{
         }
     }
     
-    private Auditoria preencheAuditoria(ResultSet rs){
+    @Override
+    protected Auditoria preencheEntidade(ResultSet rs){
         Auditoria a = new Auditoria();
         try {
             a.setId(UUID.fromString(rs.getString("id")));
@@ -71,28 +48,6 @@ public class AuditoriaDAO implements DAO<Auditoria>{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return a;
-    }
-
-    @Override
-    public Auditoria pesquisar(UUID id) {
-        Auditoria a = new Auditoria();
-        
-        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "SELECT * FROM " + TABELA + " WHERE ID='"+id+"'";
-            
-            System.out.println("[Pesquisar] - SQL: "+ SQL);
-            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        a = this.preencheAuditoria(rs);
-                    }   
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AuditoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         return a;
     }
 }

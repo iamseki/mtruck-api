@@ -5,6 +5,7 @@
  */
 package mtruck.api.services;
 
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mtruck.api.daos.DAO;
@@ -34,7 +35,11 @@ public class AuditoriaThread extends Thread{
                     break;
                 }
 
-                this.auditoriaDAO.salvar(a);
+                try {
+                    this.auditoriaDAO.salvar(a);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AuditoriaThread.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 Thread.sleep(1);
             } catch (InterruptedException ex) {
                 Logger.getLogger(AuditoriaThread.class.getName()).log(Level.SEVERE, null, ex);

@@ -10,46 +10,21 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import mtruck.api.entities.Auditoria;
 import mtruck.api.entities.Usuario;
 
 /**
  *
  * @author GERU\christian.seki
  */
-public class UsuarioDAO implements DAO<Usuario> {
-
-    private final String STRING_CONEXAO = "jdbc:postgresql://localhost/lp2";
-    private final String USUARIO = "postgres";
-    private final String SENHA = "admin";
-    private final String TABELA = "usuarios";
-
-    @Override
-    public List<Usuario> listar() {
-        ArrayList<Usuario> usuarios = new ArrayList();
-
-        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "SELECT * FROM " + TABELA;
-            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
-                try (ResultSet rs = stmt.executeQuery()) {
-                    while (rs.next()) {
-                        Usuario u = this.preencheUsuario(rs);
-                        usuarios.add(u);
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AuditoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return usuarios;
+public class UsuarioDAO extends DAO<Usuario> {
+  
+    public UsuarioDAO(){
+        super.TABELA = "usuarios";
     }
 
-    private Usuario preencheUsuario(ResultSet rs) {
+    @Override
+    protected Usuario preencheEntidade(ResultSet rs) {
         Usuario u = new Usuario();
 
         try {
@@ -68,7 +43,7 @@ public class UsuarioDAO implements DAO<Usuario> {
     }
 
     @Override
-    public void salvar(Usuario u) {
+    public void salvar(Usuario u) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "INSERT INTO usuarios (nome,cpf,email,senha,empresa_id,perfil_id)"
                     + " VALUES('" + u.getNome() + "','" + u.getCPF() + "','" + u.getEmail() + "','" 
@@ -77,30 +52,7 @@ public class UsuarioDAO implements DAO<Usuario> {
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 stmt.execute();
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(AuditoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @Override
-    public Usuario pesquisar(UUID id) {
-        Usuario u = new Usuario();
-
-        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "SELECT * FROM " + TABELA + " WHERE ID='" + id + "'";
-
-            System.out.println("[Pesquisar] - SQL: " + SQL);
-            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        u = this.preencheUsuario(rs);
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return u;
     }
 }
 
