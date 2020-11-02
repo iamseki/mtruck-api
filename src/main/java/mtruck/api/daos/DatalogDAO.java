@@ -33,8 +33,8 @@ public class DatalogDAO extends DAO<Datalog>{
             d.setLatitude(rs.getString("latitude"));
             d.setLongitude(rs.getString("longitude"));
             d.setPeso_atual(rs.getFloat("peso_atual"));
-            d.setStatus_viagem(rs.getString("status_viagem"));
-            d.setData(rs.getDate("data"));
+            d.setViagem_id(UUID.fromString(rs.getString("viagem_id")));
+            d.setData(rs.getTimestamp("data"));
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -44,8 +44,8 @@ public class DatalogDAO extends DAO<Datalog>{
     @Override
     public void salvar(Datalog d) {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO datalog (latitude,longitude,peso_atual,status_viagem)"
-                    + " VALUES('"+d.getLatitude()+"','" + d.getLongitude() + "','" + d.getPeso_atual() + "','" + d.getStatus_viagem()+"')";
+            String SQL = "INSERT INTO datalog (latitude,longitude,peso_atual,viagem_id)"
+                    + " VALUES('"+d.getLatitude()+"','" + d.getLongitude() + "','" + d.getPeso_atual() + "','" + d.getViagem_id()+"')";
             
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 stmt.execute();

@@ -14,7 +14,7 @@ import java.util.UUID;
  */
 public class Datalog {
     private UUID id;
-    private String status_viagem;
+    private UUID viagem_id;
     private float peso_atual;
     private String latitude;
     private String longitude;
@@ -22,9 +22,9 @@ public class Datalog {
     
     public Datalog(){}
 
-    public Datalog(UUID id, String status_viagem, float peso_atual, String latitude, String longitude, Date data) {
+    public Datalog(UUID id, UUID viagem_id, float peso_atual, String latitude, String longitude, Date data) {
         this.id = id;
-        this.status_viagem = status_viagem;
+        this.viagem_id = viagem_id;
         this.peso_atual = peso_atual;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -45,10 +45,6 @@ public class Datalog {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
-    }
-
-    public void setStatus_viagem(String status_viagem) {
-        this.status_viagem = status_viagem;
     }
 
     public void setPeso_atual(float peso_atual) {
@@ -75,8 +71,11 @@ public class Datalog {
         return peso_atual;
     }
 
-    public String getStatus_viagem() {
-        return status_viagem;
+    public void setViagem_id(UUID viagem_id) {
+        this.viagem_id = viagem_id;
     }
-           
+
+    public UUID getViagem_id() {
+        return viagem_id;
+    }      
 }

@@ -34,25 +34,25 @@ create table caminhoes(
 	data_cadastro timestamp default now()
 );
 
-create table datalog(
-	id uuid primary key default uuid_generate_v4(),
-	status_viagem varchar(20) not null default 'em andamento',
-	peso_atual float not null,
-	latitude varchar(20),
-	longitude varchar(20),
-	data timestamp default now()
-);
-
 create table viagens(
 	id uuid primary key  default uuid_generate_v4(),
-	datalog_id uuid references datalog(id),
 	caminhao_id uuid references caminhoes(id),
+	status varchar(20) not null default 'em andamento',
 	endereco_origem varchar(40) not null,
 	endereco_destino varchar(40) not null,
 	peso_inicial int not null,
 	peso_final int not null,
 	data_inicial timestamp default now(),
 	data_final timestamp
+);
+
+create table datalog(
+	id uuid primary key default uuid_generate_v4(),
+    viagem_id uuid references viagens(id),
+	peso_atual float not null,
+	latitude varchar(20),
+	longitude varchar(20),
+	data timestamp default now()
 );
 
 CREATE TABLE perfil_usuario (
