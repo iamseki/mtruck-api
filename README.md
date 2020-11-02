@@ -29,7 +29,7 @@ Para rodar a API localmente em **`localhost:8080`**
 
       docker run --name mtruck-pg -p 5432:5432 -e POSTGRES_DB=lp2 -e POSTGRES_PASSWORD=admin -d postgres:alpine
 
-## Logging com threads :file_folder:
+## Auditoria com threads :file_folder:
 
 Criamos dois serviços que executam a thread responsável pela auditoria das rotas, sendo eles: 
   - [AuditoriaService](./src/main/java/mtruck/api/services/AuditoriaService.java)
