@@ -10,7 +10,8 @@ import java.util.UUID;
  *
  * @author chseki
  */
-public class Usuario extends Entidade {
+public class Usuario {
+    private UUID id;
     private UUID perfil_id;
     private UUID empresa_id;
     private String nome;
@@ -19,7 +20,7 @@ public class Usuario extends Entidade {
     private String senha;
 
     public Usuario(UUID id, UUID perfil_id, UUID empresa_id, String nome, String CPF, String email, String senha) {
-        this.setId(id);
+        this.id = id;
         this.perfil_id = perfil_id;
         this.empresa_id = empresa_id;
         this.nome = nome;
@@ -29,7 +30,14 @@ public class Usuario extends Entidade {
     }
     
     public Usuario(){}
-    
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public UUID getId() {
+        return id;
+    } 
 
     public String getCPF() {
         return CPF;
