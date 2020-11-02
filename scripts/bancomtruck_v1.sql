@@ -21,6 +21,7 @@ create table funcionalidade_contrato(
 CREATE TABLE empresas(
 	id uuid primary key  default uuid_generate_v4(),
 	contrato_id uuid references contratos(id),
+	nome varchar(40) unique not null,
 	cnpj varchar(40) unique not null,
 	sede varchar(40),
 	data_cadastro timestamp DEFAULT now()
