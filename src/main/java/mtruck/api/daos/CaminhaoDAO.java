@@ -37,7 +37,7 @@ public class CaminhaoDAO extends DAO<Caminhao>{
     @Override
     public void salvar(Caminhao c) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO "+ caminsuper.TABELA +" (empresa_id,carga,placa,data_cadastro)"
+            String SQL = "INSERT INTO "+ super.TABELA +" (empresa_id,carga,placa,data_cadastro)"
                     + " VALUES('" + c.getEmpresa_Id()+ "','" + c.getCarga()+ "','" + c.getPlaca()+ "','" + c.getData_Cadastro() + "')";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
