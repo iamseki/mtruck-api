@@ -41,7 +41,7 @@ public class UsuarioDAO extends DAO<Usuario> {
     @Override
     public void salvar(Usuario u) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO usuarios (nome,cpf,email,senha,empresa_id,perfil_id)"
+            String SQL = "INSERT INTO " + super.TABELA + " (nome,cpf,email,senha,empresa_id,perfil_id)"
                     + " VALUES('" + u.getNome() + "','" + u.getCPF() + "','" + u.getEmail() + "','"
                     + u.getSenha() + "','" + u.getEmpresa_id() + "','" + u.getPerfil_id() + "')";
 

@@ -28,7 +28,7 @@ public class AuditoriaDAO extends DAO<Auditoria> {
     @Override
     public void salvar(Auditoria a) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO auditoria (descricao)"
+            String SQL = "INSERT INTO " +super.TABELA+ " (descricao)"
                     + " VALUES('" + a.getDescricao() + "')";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {

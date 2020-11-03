@@ -41,7 +41,7 @@ public class DatalogDAO extends DAO<Datalog> {
     @Override
     public void salvar(Datalog d)throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO datalog (latitude,longitude,peso_atual,viagem_id)"
+            String SQL = "INSERT INTO " + super.TABELA + " (latitude,longitude,peso_atual,viagem_id)"
                     + " VALUES('" + d.getLatitude() + "','" + d.getLongitude() + "','" + d.getPeso_atual() + "','" + d.getViagem_id() + "')";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {

@@ -35,7 +35,7 @@ public class EmpresaDAO extends DAO<Empresa> {
     @Override
     public void salvar(Empresa e) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO contratos (id_contrato,cnpj,sede,data_cadastro)"
+            String SQL = "INSERT INTO " + super.TABELA + " (id_contrato,cnpj,sede,data_cadastro)"
                     + " VALUES('" + e.getId_Contrato()+ "','" + e.getCNPJ()+ "','" + e.getSede()+ "','" + e.getData_Cadastro() + "')";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {

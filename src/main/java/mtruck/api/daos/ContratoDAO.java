@@ -37,7 +37,7 @@ public class ContratoDAO extends DAO<Contrato> {
     @Override
     public void salvar(Contrato c) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO contratos (tipo,data_inicial,data_final)"
+            String SQL = "INSERT INTO " + super.TABELA + " (tipo,data_inicial,data_final)"
                     + " VALUES('" + c.getTipo() + "','" + c.getData_Inicial() + "','" + c.getData_Final() + "')";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
