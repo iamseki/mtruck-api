@@ -19,25 +19,25 @@ import mtruck.api.entities.Caminhao;
  */
 public class CaminhaoDAO extends DAO<Caminhao>{
     public CaminhaoDAO() {
-        super.TABELA = "empresas";
+        super.TABELA = "caminhoes";
     }
 
     @Override
     protected Caminhao preencheEntidade(ResultSet rs) throws SQLException {
-        Caminhao e = new Caminhao();
+        Caminhao c = new Caminhao();
 
-        e.setId(UUID.fromString(rs.getString("id")));
-        e.setEmpresa_Id(UUID.fromString(rs.getString("empresa_id")));
-        e.setCarga(rs.getString("carga"));
-        e.setPlaca(rs.getString("placa"));
-        e.setData_Cadastro(rs.getTimestamp("data_cadastro"));
-        return e;
+        c.setId(UUID.fromString(rs.getString("id")));
+        c.setEmpresa_Id(UUID.fromString(rs.getString("empresa_id")));
+        c.setCarga(rs.getString("carga"));
+        c.setPlaca(rs.getString("placa"));
+        c.setData_Cadastro(rs.getTimestamp("data_cadastro"));
+        return c;
     }
 
     @Override
     public void salvar(Caminhao c) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO contratos (empresa_id,carga,placa,data_cadastro)"
+            String SQL = "INSERT INTO "+ caminsuper.TABELA +" (empresa_id,carga,placa,data_cadastro)"
                     + " VALUES('" + c.getEmpresa_Id()+ "','" + c.getCarga()+ "','" + c.getPlaca()+ "','" + c.getData_Cadastro() + "')";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
