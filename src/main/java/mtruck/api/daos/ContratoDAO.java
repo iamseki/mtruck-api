@@ -29,8 +29,8 @@ public class ContratoDAO extends DAO<Contrato> {
 
         c.setId(UUID.fromString(rs.getString("id")));
         c.setTipo(rs.getString("tipo"));
-        c.setData_Inicial(rs.getTimestamp("data_inicial"));
-        c.setData_Final(rs.getTimestamp("data_final"));
+        c.setDataInicial(rs.getTimestamp("data_inicial"));
+        c.setDataFinal(rs.getTimestamp("data_final"));
         return c;
     }
 
@@ -38,7 +38,7 @@ public class ContratoDAO extends DAO<Contrato> {
     public void salvar(Contrato c) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "INSERT INTO " + super.TABELA + " (tipo,data_inicial,data_final)"
-                    + " VALUES('" + c.getTipo() + "','" + c.getData_Inicial() + "','" + c.getData_Final() + "')";
+                    + " VALUES('" + c.getTipo() + "','" + c.getDataInicial() + "','" + c.getDataFinal() + "')";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 stmt.execute();

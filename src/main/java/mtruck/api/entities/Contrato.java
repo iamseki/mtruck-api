@@ -14,14 +14,14 @@ import java.util.Date;
 public class Contrato {
     private UUID id;
     private String tipo;
-    private Date data_inicial;
-    private Date data_final;
+    private Date dataInicial;
+    private Date dataFinal;
 
-    public Contrato(UUID id, String tipo, Date data_inicial, Date data_final) {
+    public Contrato(UUID id, String tipo, Date dataInicial, Date dataFinal) {
         this.id = id;
         this.tipo = tipo;
-        this.data_inicial = data_inicial;
-        this.data_final = data_final;
+        this.dataInicial = dataInicial;
+        this.dataFinal = dataFinal;
     }
     
     public Contrato(){}
@@ -34,12 +34,12 @@ public class Contrato {
         return tipo;
     }
 
-    public Date getData_Inicial() {
-        return data_inicial;
+    public Date getDataInicial() {
+        return dataInicial;
     }
 
-    public Date getData_Final() {
-        return data_final;
+    public Date getDataFinal() {
+        return dataFinal;
     }
 
     public void setId(UUID id) {
@@ -50,11 +50,11 @@ public class Contrato {
         this.tipo = tipo;
     }
 
-    public void setData_Inicial(Date data_inicial) {
-        this.data_inicial = data_inicial;
+    public void setDataInicial(Date dataInicial) {
+        this.dataInicial = dataInicial;
     }
 
-    public void setData_Final(Date data_final) {
-        this.data_final = data_final;
+    public void setDataFinal(Date dataFinal) {
+        this.dataFinal = dataFinal;
     }
 }
