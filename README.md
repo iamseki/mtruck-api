@@ -23,7 +23,7 @@ Para rodar a API localmente em **`localhost:8080`**
 - Banco Relacional utilizado: `Postgres SQL`
   - String de conexão: `jdbc:postgresql://localhost/lp2`
   - Usuário: `postgres` Senha: `admin`
-  - Para criação do banco foi utilizado o seguinte [scritp](./scripts/bancomtruck_v1.sql)
+  - Para criação do banco foi utilizado o seguinte [scritp](./docs/scripts/bancomtruck_v1.sql)
   
 - Se estiver em um ambiente linux com a engine docker, execute o seguinte comando para inicializar o banco em um container:
 
