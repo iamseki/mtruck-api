@@ -18,11 +18,11 @@ import java.util.UUID;
  *
  * @author christian.seki
  */
-public abstract class DAO<E> {
 
-    final String STRING_CONEXAO = "jdbc:postgresql://localhost/lp2";
-    final String USUARIO = "postgres";
-    final String SENHA = "admin";
+public abstract class DAO<E> {
+    protected String STRING_CONEXAO = "jdbc:postgresql://localhost/lp2";
+    protected String USUARIO = "postgres";
+    protected String SENHA = "admin";
     protected String TABELA;
     
     protected E preencheEntidade(ResultSet rs) throws SQLException {

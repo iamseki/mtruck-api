@@ -18,6 +18,12 @@ import mtruck.api.entities.Empresa;
 public class EmpresaDAO extends DAO<Empresa> {
     public EmpresaDAO() {
         super.TABELA = "empresas";
+        String SPRING_DATASOURCE_URL = System.getenv("SPRING_DATASOURCE_URL");
+        if(SPRING_DATASOURCE_URL != null){
+            super.STRING_CONEXAO = "jdbc:" + SPRING_DATASOURCE_URL;
+            super.USUARIO = System.getenv("SPRING_DATASOURCE_USERNAME");
+            super.SENHA = System.getenv("SPRING_DATASOURCE_PASSWORD");
+        }
     }
 
     @Override

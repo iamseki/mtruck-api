@@ -23,6 +23,12 @@ public class DatalogDAO extends DAO<Datalog> {
 
     public DatalogDAO() {
         super.TABELA = "datalog";
+        String SPRING_DATASOURCE_URL = System.getenv("SPRING_DATASOURCE_URL");
+        if(SPRING_DATASOURCE_URL != null){
+            super.STRING_CONEXAO = "jdbc:" + SPRING_DATASOURCE_URL;
+            super.USUARIO = System.getenv("SPRING_DATASOURCE_USERNAME");
+            super.SENHA = System.getenv("SPRING_DATASOURCE_PASSWORD");
+        }
     }
 
     @Override

@@ -5,6 +5,7 @@
  */
 package mtruck.api.controllers;
 
+import java.util.List;
 import java.sql.SQLException;
 import mtruck.api.daos.EmpresaDAO;
 import mtruck.api.entities.Empresa;
@@ -12,6 +13,7 @@ import mtruck.api.services.EmpresaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -35,5 +37,12 @@ public class EmpresaController {
         svc.salvar(empresa);
     }
 
-  
+    @GetMapping
+    List<Empresa> listar() {
+        EmpresaDAO dao = new EmpresaDAO();
+        EmpresaService service = new EmpresaService(dao);
+        List<Empresa> empresas = service.listar();
+
+        return empresas;
+    }
 }
