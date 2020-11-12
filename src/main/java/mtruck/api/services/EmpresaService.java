@@ -45,6 +45,7 @@ public class EmpresaService {
         try {
             Auditoria a = new Auditoria("Listagem de Empresas");
             AuditoriaService.getInstancia().adicionaAuditoria(a);
+            
             empresas = this.empresaDAO.listar();
             
             AuditoriaService.getInstancia().ativar();
