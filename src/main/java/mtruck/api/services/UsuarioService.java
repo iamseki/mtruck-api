@@ -43,7 +43,7 @@ public class UsuarioService {
     public Usuario login(String email, String senha) throws SQLException{
         UsuarioDAO usuarioAux = new UsuarioDAO();
         Usuario usuario = usuarioAux.procuraUsusarioPorUserESenha(email, senha);
-        if(usuario != null){
+        if(usuario.getId() != null){
             return usuario;
         }else{
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário e senha Invalidos.");
