@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import mtruck.api.daos.UsuarioDAO;
+import mtruck.api.dtos.ResponseLoginDTO;
 import mtruck.api.entities.Usuario;
 import mtruck.api.services.UsuarioService;
 import org.springframework.http.HttpStatus;
@@ -52,12 +53,11 @@ public class UserController {
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/login")
-    Usuario Login(@RequestBody Usuario user) throws SQLException{
+    ResponseLoginDTO Login(@RequestBody Usuario user) throws SQLException{
         UsuarioDAO uDAO = new UsuarioDAO();
         UsuarioService u = new UsuarioService(uDAO);
-        Usuario usuario = new Usuario();
-        usuario = u.login(user.getEmail(), user.getSenha());
-        return user;
+
+        return u.login(user.getEmail(), user.getSenha());
     }
     @GetMapping("/{id}")
     Usuario pesquisar(@PathVariable UUID id) {

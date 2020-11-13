@@ -7,8 +7,11 @@ package mtruck.api.services;
 
 import java.sql.SQLException;
 import mtruck.api.daos.DAO;
+import mtruck.api.daos.PerfilUsuarioDAO;
 import mtruck.api.daos.UsuarioDAO;
+import mtruck.api.dtos.ResponseLoginDTO;
 import mtruck.api.entities.Auditoria;
+import mtruck.api.entities.PerfilUsuario;
 import mtruck.api.entities.Usuario;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
@@ -40,11 +43,14 @@ public class UsuarioService {
         AuditoriaService.getInstancia().ativar();
     }
     
-    public Usuario login(String email, String senha) throws SQLException{
+    public ResponseLoginDTO login(String email, String senha) throws SQLException{
         UsuarioDAO usuarioAux = new UsuarioDAO();
         Usuario usuario = usuarioAux.procuraUsusarioPorUserESenha(email, senha);
+        
         if(usuario.getId() != null){
-            return usuario;
+            PerfilUsuarioDAO perfilDao = new PerfilUsuarioDAO();
+            PerfilUsuario perfil = perfilDao.pesquisar(usuario.getPerfil_id());
+            return new ResponseLoginDTO(usuario.getNome(), usuario.getNome(), usuario.getEmail());
         }else{
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário e senha Invalidos.");
         }
