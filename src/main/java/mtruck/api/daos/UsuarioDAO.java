@@ -56,4 +56,21 @@ public class UsuarioDAO extends DAO<Usuario> {
             }
         }
     }
+    
+    public Usuario procuraUsusarioPorUserESenha(String email, String senha) throws SQLException{
+       Usuario u = new Usuario();
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "SELECT * FROM " + TABELA + " WHERE email='" + email + "'" + " AND senha= '"+ senha + "'";
+
+            System.out.println("[Pesquisar] - SQL: " + SQL);
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        u = preencheEntidade(rs);
+                    }
+                }
+            }
+        }
+        return u;
+    }
 }

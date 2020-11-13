@@ -5,9 +5,13 @@
  */
 package mtruck.api.services;
 
+import java.sql.SQLException;
 import mtruck.api.daos.DAO;
+import mtruck.api.daos.UsuarioDAO;
 import mtruck.api.entities.Auditoria;
 import mtruck.api.entities.Usuario;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  *
@@ -34,5 +38,15 @@ public class UsuarioService {
         // blabla e auditar se der certo
         
         AuditoriaService.getInstancia().ativar();
+    }
+    
+    public Usuario login(String email, String senha) throws SQLException{
+        UsuarioDAO usuarioAux = new UsuarioDAO();
+        Usuario usuario = usuarioAux.procuraUsusarioPorUserESenha(email, senha);
+        if(usuario != null){
+            return usuario;
+        }else{
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário e senha Invalidos.");
+        }
     }
 }
