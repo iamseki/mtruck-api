@@ -6,13 +6,16 @@
 package mtruck.api.services;
 
 import java.sql.SQLException;
+import java.util.UUID;
 import mtruck.api.daos.DAO;
+import mtruck.api.daos.EmpresaDAO;
 import mtruck.api.daos.PerfilUsuarioDAO;
 import mtruck.api.daos.UsuarioDAO;
 import mtruck.api.dtos.ResponseLoginDTO;
 import mtruck.api.entities.Auditoria;
 import mtruck.api.entities.PerfilUsuario;
 import mtruck.api.entities.Usuario;
+import mtruck.api.entities.Empresa;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -47,10 +50,13 @@ public class UsuarioService {
         UsuarioDAO usuarioAux = new UsuarioDAO();
         Usuario usuario = usuarioAux.procuraUsusarioPorUserESenha(email, senha);
         
-        if(usuario.getId() != null){
+        UUID userId = usuario.getId();
+        
+        if(userId != null){
             PerfilUsuarioDAO perfilDao = new PerfilUsuarioDAO();
             PerfilUsuario perfil = perfilDao.pesquisar(usuario.getPerfil_id());
-            return new ResponseLoginDTO(usuario.getNome(), usuario.getNome(), usuario.getEmail());
+            
+            return new ResponseLoginDTO(usuario.getNome(), usuario.getNome(), usuario.getEmail(), usuario.getEmpresa_id());
         }else{
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário e senha Invalidos.");
         }
