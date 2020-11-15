@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import mtruck.api.entities.Caminhao;
 
@@ -51,5 +53,23 @@ public class CaminhaoDAO extends DAO<Caminhao>{
                 stmt.execute();
             }
         }
+    }
+    
+     public List<Caminhao> listaPorEmpresaId(UUID empresa_id) throws SQLException{
+       ArrayList<Caminhao> caminhoes = new ArrayList();
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "SELECT * FROM " + TABELA + " WHERE empresa_id='" + empresa_id.toString() +"'";
+
+            System.out.println("[Pesquisar] - SQL: " + SQL);
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        Caminhao c = this.preencheEntidade(rs);
+                        caminhoes.add(c);
+                    }
+                }
+            }
+        }
+        return caminhoes;
     }
 }

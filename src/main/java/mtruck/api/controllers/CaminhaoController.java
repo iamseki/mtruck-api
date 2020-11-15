@@ -7,12 +7,14 @@ package mtruck.api.controllers;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 import mtruck.api.daos.CaminhaoDAO;
 import mtruck.api.entities.Caminhao;
 import mtruck.api.services.CaminhaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +45,17 @@ public class CaminhaoController {
         CaminhaoService svc = new CaminhaoService(caminhaoDAO);
         List<Caminhao> caminhoes = svc.listar();
 
+        return caminhoes;
+    }
+    
+    @GetMapping("/{empresa_id}")
+    List<Caminhao> pesquisar(@PathVariable UUID empresa_id) {
+        
+        System.out.println(empresa_id.toString());
+        CaminhaoDAO caminhaoDAO = new CaminhaoDAO();
+        CaminhaoService svc = new CaminhaoService(caminhaoDAO);
+        List<Caminhao> caminhoes = svc.listar(empresa_id);
+        
         return caminhoes;
     }
 }
