@@ -63,7 +63,7 @@ public class CaminhaoDAO extends DAO<Caminhao>{
             System.out.println("[Pesquisar] - SQL: " + SQL);
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
+                    while (rs.next()) {
                         Caminhao c = this.preencheEntidade(rs);
                         caminhoes.add(c);
                     }
