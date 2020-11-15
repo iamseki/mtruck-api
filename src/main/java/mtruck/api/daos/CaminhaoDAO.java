@@ -33,7 +33,7 @@ public class CaminhaoDAO extends DAO<Caminhao>{
         Caminhao c = new Caminhao();
 
         c.setId(UUID.fromString(rs.getString("id")));
-        c.setEmpresa_Id(UUID.fromString(rs.getString("empresa_id")));
+        c.setEmpresa_id(UUID.fromString(rs.getString("empresa_id")));
         c.setModelo(rs.getString("modelo"));
         c.setChassi(rs.getString("chassi"));
         c.setPlaca(rs.getString("placa"));
