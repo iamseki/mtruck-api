@@ -70,4 +70,20 @@ public class CaminhaoService {
         }
         return caminhoes;
     }
+           
+        public Caminhao pesquisar(UUID id){
+             Caminhao c = null;
+        try {
+            Auditoria a = new Auditoria("Listagem de Datalog");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+
+            
+            c = this.caminhaoDAO.pesquisar(id);
+            
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return c;
+       }
 }

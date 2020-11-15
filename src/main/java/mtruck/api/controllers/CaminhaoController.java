@@ -48,14 +48,11 @@ public class CaminhaoController {
         return caminhoes;
     }
     
-    @GetMapping("/{empresa_id}")
-    List<Caminhao> pesquisar(@PathVariable UUID empresa_id) {
-        
-        System.out.println(empresa_id.toString());
+    @GetMapping("/{id}")
+    Caminhao pesquisar(@PathVariable UUID id) {
         CaminhaoDAO caminhaoDAO = new CaminhaoDAO();
         CaminhaoService svc = new CaminhaoService(caminhaoDAO);
-        List<Caminhao> caminhoes = svc.listar(empresa_id);
-        
-        return caminhoes;
+        return svc.pesquisar(id);
     }
+    
 }
