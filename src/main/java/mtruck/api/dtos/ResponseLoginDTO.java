@@ -16,7 +16,7 @@ public class ResponseLoginDTO {
     return email;
   }
 
-  public String getPerfil_id() {
+  public String getPerfil_usuario() {
       return perfil_usuario;
     }
 

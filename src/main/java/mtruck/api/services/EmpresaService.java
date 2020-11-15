@@ -52,6 +52,7 @@ public class EmpresaService {
         } catch (SQLException ex) {
             Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return empresas;
     }
 }
