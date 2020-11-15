@@ -15,14 +15,16 @@ import java.util.UUID;
 public class Caminhao {
     private UUID id;
     private UUID empresa_id;
-    private String carga;
+    private String modelo;
+    private String chassi;
     private String placa;
     private Date data_cadastro;
 
-    public Caminhao(UUID id, UUID empresa_id, String carga, String placa, Date data_cadastro ) {
+    public Caminhao(UUID id, UUID empresa_id, String modelo,String chassi, String placa, Date data_cadastro ) {
         this.id = id;
         this.empresa_id = empresa_id;
-        this.carga = carga;
+        this.modelo = modelo;
+        this.chassi = chassi;
         this.placa = placa;
         this.data_cadastro = data_cadastro;
     }
@@ -37,8 +39,12 @@ public class Caminhao {
         return empresa_id;
     }
 
-    public String getCarga() {
-        return carga;
+    public String getModelo() {
+        return modelo;
+    }
+    
+        public String getChassi() {
+        return chassi;
     }
 
     public String getPlaca() {
@@ -57,8 +63,12 @@ public class Caminhao {
         this.empresa_id = empresa_id;
     }
 
-    public void setCarga(String carga) {
-        this.carga = carga;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+    
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
     }
 
     public void setPlaca(String placa) {

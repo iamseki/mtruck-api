@@ -24,3 +24,12 @@ values ('gerente','712.491.940-16','gerente','gerente@gerente.com',
 ('admin','928.580.070-04','admin','admin@admin.com',
 (select id from empresas where cnpj like '12345678910'), 
 (select id from perfil_usuario where descricao like 'Administrador'));
+
+insert into caminhoes(empresa_id,placa,chassi,modelo)
+values 
+((select id from empresas where cnpj like '12345678910'),
+'MYD-6258','2fVmvxegAKjYC0155','IVEKO'),
+((select id from empresas where cnpj like '12345678911'),
+'NEU-7883','5pAEAK3zxbC7A0791','IVEKO'),
+((select id from empresas where cnpj like '12345678912'),
+'FTK-1821','78NzT8upDKCld6836','IVEKO')

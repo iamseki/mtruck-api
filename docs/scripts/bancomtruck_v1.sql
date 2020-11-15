@@ -30,8 +30,9 @@ CREATE TABLE empresas(
 create table caminhoes(
 	id uuid primary key  default uuid_generate_v4(),
 	empresa_id uuid references empresas(id),
-	carga varchar(50) not null,
 	placa varchar unique not null,
+	modelo varchar not null,
+	chassi varchar not null,
 	data_cadastro timestamp default now()
 );
 
@@ -39,6 +40,7 @@ create table viagens(
 	id uuid primary key  default uuid_generate_v4(),
 	caminhao_id uuid references caminhoes(id),
 	status varchar(20) not null default 'em andamento',
+	carga varchar(40) not null,
 	endereco_origem varchar(40) not null,
 	endereco_destino varchar(40) not null,
 	peso_inicial int not null,

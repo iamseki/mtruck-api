@@ -6,6 +6,10 @@
 package mtruck.api.services;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mtruck.api.daos.DAO;
 import mtruck.api.entities.Auditoria;
 import mtruck.api.entities.Caminhao;
@@ -34,5 +38,19 @@ public class CaminhaoService {
         this.caminhaoDAO.salvar(c);
         
         AuditoriaService.getInstancia().ativar();
+    }
+    
+        public List<Caminhao> listar() {
+        List<Caminhao> caminhoes = new ArrayList<>();
+        try {
+            Auditoria a = new Auditoria("Listagem de Datalog");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+            caminhoes = this.caminhaoDAO.listar();
+            
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return caminhoes;
     }
 }
