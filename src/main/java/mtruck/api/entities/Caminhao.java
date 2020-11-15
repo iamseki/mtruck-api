@@ -59,7 +59,7 @@ public class Caminhao {
         this.id = id;
     }
     
-    public void setEmpresa_Id(UUID empresa_id) {
+    public void setEmpresa_id(UUID empresa_id) {
         this.empresa_id = empresa_id;
     }
 

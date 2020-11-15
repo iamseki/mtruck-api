@@ -33,6 +33,7 @@ public class CaminhaoController {
 
         CaminhaoDAO caminhaoDAO = new CaminhaoDAO();
         CaminhaoService svc = new CaminhaoService(caminhaoDAO);
+        System.out.println(caminhao);
         svc.salvar(caminhao);
     }
     

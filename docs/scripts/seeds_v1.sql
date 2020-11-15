@@ -13,15 +13,15 @@ insert into funcionalidade_contrato (contrato_id, funcionalidade_id)
 values((select id from contratos where tipo like 'Eterno'),(select id from funcionalidades where descricao like 'Tudo'));
 
 insert into usuarios(nome,cpf,email,senha,empresa_id,perfil_id)
-values ('gerente','712.491.940-16','gerente','gerente@gerente.com',
+values ('gerente','712.491.940-16','gerente@gerente.com','gerente',
 (select id from empresas where cnpj like '12345678910'), 
 (select id from perfil_usuario where descricao like 'Gerente')),
 
-('operador','321.645.800-87','operador','operador@operador.com',
+('operador','321.645.800-87','operador@operador.com','operador',
 (select id from empresas where cnpj like '12345678910'), 
 (select id from perfil_usuario where descricao like 'Operador')),
 
-('admin','928.580.070-04','admin','admin@admin.com',
+('admin','928.580.070-04','admin@admin.com','admin',
 (select id from empresas where cnpj like '12345678910'), 
 (select id from perfil_usuario where descricao like 'Administrador'));
 

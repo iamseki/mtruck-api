@@ -2,7 +2,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE contratos (
 	id uuid primary key default uuid_generate_v4(),
-	tipo varchar(40) not null,
+	tipo varchar(40) unique not null,
 	data_inicial timestamp default now(),
 	data_final timestamp
 );

@@ -25,10 +25,6 @@ public class EmpresaService {
         this.empresaDAO = dao;
     }
     
-    public EmpresaService(){
-        this.empresaDAO = null;
-    };
-    
     public void salvar(Empresa e) throws SQLException{
         
         Auditoria a = new Auditoria("Inclusão de empresa");
@@ -39,6 +35,7 @@ public class EmpresaService {
         
         AuditoriaService.getInstancia().ativar();
     }
+
 
     public List<Empresa> listar() {
         List<Empresa> empresas = new ArrayList<>();
