@@ -72,4 +72,16 @@ public class CaminhaoDAO extends DAO<Caminhao>{
         }
         return caminhoes;
     }
+     
+    public void editar(Caminhao c) throws SQLException{
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "UPDATE "+ super.TABELA 
+                    + " SET modelo='"+c.getModelo()+ "',chassi='" + c.getChassi() + "',placa='"+ c.getPlaca()+"'"
+                    + " WHERE id='"+c.getId().toString()+"'";
+
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                stmt.execute();
+            }
+        }
+    }
 }

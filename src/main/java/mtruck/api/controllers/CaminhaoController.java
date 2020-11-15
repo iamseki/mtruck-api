@@ -14,6 +14,7 @@ import mtruck.api.services.CaminhaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,4 +56,11 @@ public class CaminhaoController {
         return svc.pesquisar(id);
     }
     
+    @PatchMapping("/{id}")
+    void editar(@PathVariable UUID id, @RequestBody Caminhao c) {
+        CaminhaoDAO caminhaoDAO = new CaminhaoDAO();
+        CaminhaoService svc = new CaminhaoService(caminhaoDAO);
+        c.setId(id);
+        svc.editar(c);
+    } 
 }

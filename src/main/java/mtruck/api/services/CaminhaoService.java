@@ -86,4 +86,18 @@ public class CaminhaoService {
         }
         return c;
        }
+        
+       public void editar(Caminhao c){
+                   try {
+            Auditoria a = new Auditoria("Listagem de Datalog");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+
+            CaminhaoDAO camDao = new CaminhaoDAO();
+            camDao.editar(c);
+            
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       }
 }
