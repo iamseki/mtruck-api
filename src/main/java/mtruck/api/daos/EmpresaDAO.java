@@ -31,9 +31,10 @@ public class EmpresaDAO extends DAO<Empresa> {
         Empresa e = new Empresa();
 
         e.setId(UUID.fromString(rs.getString("id")));
-        e.setId_Contrato(UUID.fromString(rs.getString("id_contrato")));
+        e.setContrato_id(UUID.fromString(rs.getString("contrato_id")));
         e.setCNPJ(rs.getString("cnpj"));
         e.setSede(rs.getString("sede"));
+        e.setNome(rs.getString("nome"));
         e.setData_Cadastro(rs.getTimestamp("data_cadastro"));
         return e;
     }
@@ -41,8 +42,8 @@ public class EmpresaDAO extends DAO<Empresa> {
     @Override
     public void salvar(Empresa e) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO " + super.TABELA + " (id_contrato,cnpj,sede,data_cadastro)"
-                    + " VALUES('" + e.getId_Contrato()+ "','" + e.getCNPJ()+ "','" + e.getSede()+ "','" + e.getData_Cadastro() + "')";
+            String SQL = "INSERT INTO " + super.TABELA + " (contrato_id,cnpj,sede,data_cadastro)"
+                    + " VALUES('" + e.getContrato_id()+ "','" + e.getCNPJ()+ "','" + e.getSede()+ "','" + e.getData_Cadastro() + "')";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 stmt.execute();

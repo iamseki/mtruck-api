@@ -13,17 +13,19 @@ import java.util.Date;
  */
 public class Empresa {
     private UUID id;
-    private UUID id_contrato;
+    private UUID contrato_id;
     private String cnpj;
     private String sede;
+    private String nome;
     private Date data_cadastro;
 
-    public Empresa(UUID id, UUID id_contrato, String cnpj, String sede, Date data_cadastro ) {
+    public Empresa(UUID id, UUID contrato_id, String cnpj, String sede,String nome, Date data_cadastro ) {
         this.id = id;
-        this.id_contrato = id_contrato;
+        this.contrato_id = contrato_id;
         this.cnpj = cnpj;
         this.sede = sede;
         this.data_cadastro = data_cadastro;
+        this.nome = nome;
     }
     
     public Empresa(){}
@@ -32,8 +34,16 @@ public class Empresa {
         return id;
     } 
 
-    public UUID getId_Contrato() {
-        return id_contrato;
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+     
+    public UUID getContrato_id() {
+        return contrato_id;
     }
 
     public String getCNPJ() {
@@ -52,8 +62,8 @@ public class Empresa {
         this.id = id;
     }
     
-    public void setId_Contrato(UUID id_contrato) {
-        this.id_contrato = id_contrato;
+    public void setContrato_id(UUID contrato_id) {
+        this.contrato_id = contrato_id;
     }
 
     public void setCNPJ(String cnpj) {
