@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/usuarios")
 @Validated
 @RestController
-public class UserController {
+public class UsuarioController {
 
     @GetMapping
     List<Usuario> listar() {
@@ -46,9 +46,9 @@ public class UserController {
     @PostMapping
     void cadastrar(@RequestBody Usuario user) {
 
-     //   UsuarioService svc = new UsuarioService();
-     //   System.out.println(user.getNome());
-     //   svc.salvar(user);
+      UsuarioService svc = new UsuarioService();
+
+        svc.salvar(user);
     }
 
     @ResponseStatus(code = HttpStatus.CREATED)
@@ -59,17 +59,17 @@ public class UserController {
 
         return u.login(user.getEmail(), user.getSenha());
     }
-    @GetMapping("/{id}")
-    Usuario pesquisar(@PathVariable UUID id) {
-        Usuario user = new Usuario();
-        
-        return user;
-    }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     void editar(@RequestBody Usuario user, @PathVariable UUID id) {
-
+        Usuario usuario = new Usuario();
+        
+        UsuarioDAO uDAO = new UsuarioDAO();
+        UsuarioService uSVC = new UsuarioService(uDAO);
+        
+        usuario.setId(id);
+        uSVC.editar(usuario);
     }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)

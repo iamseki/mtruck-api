@@ -7,6 +7,8 @@ package mtruck.api.services;
 
 import java.sql.SQLException;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mtruck.api.daos.DAO;
 import mtruck.api.daos.PerfilUsuarioDAO;
 import mtruck.api.daos.UsuarioDAO;
@@ -45,8 +47,8 @@ public class UsuarioService {
     }
     
     public ResponseLoginDTO login(String email, String senha) throws SQLException{
-        UsuarioDAO usuarioAux = new UsuarioDAO();
-        Usuario usuario = usuarioAux.procuraUsusarioPorUserESenha(email, senha);
+
+        Usuario usuario = ((UsuarioDAO) this.usuarioDAO).procuraUsusarioPorUserESenha(email, senha);
         
         UUID userId = usuario.getId();
         
@@ -59,4 +61,17 @@ public class UsuarioService {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário e senha Invalidos.");
         }
     }
+    
+           public void editar(Usuario u){
+        try {
+            Auditoria a = new Auditoria("Listagem de Datalog");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+            
+            ((UsuarioDAO) this.usuarioDAO).editar(u);
+   
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       }
 }
