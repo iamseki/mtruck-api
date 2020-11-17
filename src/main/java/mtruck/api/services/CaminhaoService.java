@@ -60,10 +60,9 @@ public class CaminhaoService {
         try {
             Auditoria a = new Auditoria("Listagem de Datalog");
             AuditoriaService.getInstancia().adicionaAuditoria(a);
-            CaminhaoDAO camDao = new CaminhaoDAO();
             
-            caminhoes = camDao.listaPorEmpresaId(empresa_id);
-            
+            caminhoes = ((CaminhaoDAO) this.caminhaoDAO).listaPorEmpresaId(empresa_id);
+
             AuditoriaService.getInstancia().ativar();
         } catch (SQLException ex) {
             Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,13 +87,12 @@ public class CaminhaoService {
        }
         
        public void editar(Caminhao c){
-                   try {
+        try {
             Auditoria a = new Auditoria("Listagem de Datalog");
             AuditoriaService.getInstancia().adicionaAuditoria(a);
-
-            CaminhaoDAO camDao = new CaminhaoDAO();
-            camDao.editar(c);
             
+            ((CaminhaoDAO) this.caminhaoDAO).editar(c);
+   
             AuditoriaService.getInstancia().ativar();
         } catch (SQLException ex) {
             Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);

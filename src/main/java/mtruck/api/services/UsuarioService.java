@@ -8,14 +8,12 @@ package mtruck.api.services;
 import java.sql.SQLException;
 import java.util.UUID;
 import mtruck.api.daos.DAO;
-import mtruck.api.daos.EmpresaDAO;
 import mtruck.api.daos.PerfilUsuarioDAO;
 import mtruck.api.daos.UsuarioDAO;
 import mtruck.api.dtos.ResponseLoginDTO;
 import mtruck.api.entities.Auditoria;
 import mtruck.api.entities.PerfilUsuario;
 import mtruck.api.entities.Usuario;
-import mtruck.api.entities.Empresa;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
