@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package mtruck.api.controllers;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import mtruck.api.daos.PerfilUsuarioDAO;
 import mtruck.api.daos.UsuarioDAO;
 import mtruck.api.dtos.ResponseLoginDTO;
+import mtruck.api.entities.PerfilUsuario;
 import mtruck.api.entities.Usuario;
+import mtruck.api.services.PerfilUsuarioService;
 import mtruck.api.services.UsuarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -42,18 +44,25 @@ public class UsuarioController {
         return users;
     }
 
+    @GetMapping("perfil")
+    List<PerfilUsuario> listarPerfis() {
+        PerfilUsuarioDAO dao = new PerfilUsuarioDAO();
+        PerfilUsuarioService svc = new PerfilUsuarioService(dao);
+        return svc.listar();
+    }
+
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     void cadastrar(@RequestBody Usuario user) {
 
-      UsuarioService svc = new UsuarioService();
+        UsuarioService svc = new UsuarioService();
 
         svc.salvar(user);
     }
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/login")
-    ResponseLoginDTO Login(@RequestBody Usuario user) throws SQLException{
+    ResponseLoginDTO Login(@RequestBody Usuario user) throws SQLException {
         UsuarioDAO uDAO = new UsuarioDAO();
         UsuarioService u = new UsuarioService(uDAO);
 
@@ -64,10 +73,10 @@ public class UsuarioController {
     @PutMapping("/{id}")
     void editar(@RequestBody Usuario user, @PathVariable UUID id) {
         Usuario usuario = new Usuario();
-        
+
         UsuarioDAO uDAO = new UsuarioDAO();
         UsuarioService uSVC = new UsuarioService(uDAO);
-        
+
         usuario.setId(id);
         uSVC.editar(usuario);
     }
