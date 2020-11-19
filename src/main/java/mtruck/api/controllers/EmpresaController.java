@@ -50,13 +50,13 @@ public class EmpresaController {
 
         return empresas;
     }
-    
+
     @GetMapping("/caminhoes/{empresa_id}")
     List<Caminhao> pesquisar(@PathVariable UUID empresa_id) {
         CaminhaoDAO caminhaoDAO = new CaminhaoDAO();
         CaminhaoService svc = new CaminhaoService(caminhaoDAO);
         List<Caminhao> caminhoes = svc.listar(empresa_id);
-        
+
         return caminhoes;
     }
 }

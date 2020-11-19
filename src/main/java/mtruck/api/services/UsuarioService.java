@@ -6,6 +6,7 @@
 package mtruck.api.services;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +62,16 @@ public class UsuarioService {
         } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário e senha Invalidos.");
         }
+    }
+
+    public List<Usuario> listarPorEmpresaID(UUID id) {
+        List<Usuario> usuarios = null;
+        try {
+            usuarios = ((UsuarioDAO) this.usuarioDAO).listarPorEmpresaID(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuarios;
     }
 
     public void editar(Usuario u) {
