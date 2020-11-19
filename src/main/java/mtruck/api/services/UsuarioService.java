@@ -39,25 +39,31 @@ public class UsuarioService {
     ;
     
     public void salvar(Usuario u) {
+        try {
+            Auditoria a = new Auditoria("Inclusão de usuário");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
 
-        Auditoria a = new Auditoria("Inclusão de usuário");
-        AuditoriaService.getInstancia().adicionaAuditoria(a);
+            this.usuarioDAO.salvar(u);
 
-        // Salvar usuário no banco
-        // blabla e auditar se der certo
-        AuditoriaService.getInstancia().ativar();
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public ResponseLoginDTO login(String email, String senha) throws SQLException {
-
+            Auditoria a = new Auditoria("Execução de Login");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
         Usuario usuario = ((UsuarioDAO) this.usuarioDAO).procuraUsusarioPorUserESenha(email, senha);
 
         UUID userId = usuario.getId();
-
+ 
         if (userId != null) {
             PerfilUsuarioDAO perfilDao = new PerfilUsuarioDAO();
             PerfilUsuario perfil = perfilDao.pesquisar(usuario.getPerfil_id());
-
+            
+            AuditoriaService.getInstancia().ativar();
+            
             return new ResponseLoginDTO(usuario.getNome(), usuario.getNome(), usuario.getEmail(), usuario.getEmpresa_id());
         } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário e senha Invalidos.");
@@ -76,7 +82,7 @@ public class UsuarioService {
 
     public void editar(Usuario u) {
         try {
-            Auditoria a = new Auditoria("Listagem de Datalog");
+            Auditoria a = new Auditoria("Edição de user");
             AuditoriaService.getInstancia().adicionaAuditoria(a);
 
             ((UsuarioDAO) this.usuarioDAO).editar(u);

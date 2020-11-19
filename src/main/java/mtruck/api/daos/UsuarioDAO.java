@@ -79,7 +79,7 @@ public class UsuarioDAO extends DAO<Usuario> {
     public void editar(Usuario u) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "UPDATE " + super.TABELA
-                    + " SET nome='" + u.getNome() + "',cpf='" + u.getCPF() + "',email='" + u.getEmail() + "'" + "',senha='" + u.getSenha() + "'"
+                    + " SET nome='" + u.getNome() + "',cpf='" + u.getCPF() + "',email='" + u.getEmail() + "',senha='" + u.getSenha() + "'"
                     + " WHERE id='" + u.getId().toString() + "'";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
