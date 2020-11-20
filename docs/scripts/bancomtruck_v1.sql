@@ -44,7 +44,7 @@ create table viagens(
 	endereco_origem varchar(40) not null,
 	endereco_destino varchar(40) not null,
 	peso_inicial int not null,
-	peso_final int not null,
+	peso_final int,
 	data_inicial timestamp default now(),
 	data_final timestamp
 );
