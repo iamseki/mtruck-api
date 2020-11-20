@@ -15,6 +15,7 @@ import java.util.UUID;
 public class Viagem {
     private UUID id;
     private UUID caminhao_id;
+    private String carga;
     private String status;
     private String endereco_origem;
     private String endereco_destino;
@@ -23,7 +24,7 @@ public class Viagem {
     private Date data_inicial;
     private Date data_final;
 
-    public Viagem(UUID id, UUID caminhao_id, String status, String endereco_origem, String endereco_destino, float peso_inicial, float peso_final, Date data_inicial, Date data_final) {
+    public Viagem(UUID id, UUID caminhao_id,String carga, String status, String endereco_origem, String endereco_destino, float peso_inicial, float peso_final, Date data_inicial, Date data_final) {
         this.id = id;
         this.caminhao_id = caminhao_id;
         this.status = status;
@@ -33,10 +34,20 @@ public class Viagem {
         this.peso_final = peso_final;
         this.data_inicial = data_inicial;
         this.data_final = data_final;
+        this.carga = carga;
     }
 
     public Viagem() {
     }
+
+    public void setCarga(String carga) {
+        this.carga = carga;
+    }
+
+    public String getCarga() {
+        return carga;
+    }
+  
 
     public UUID getCaminhao_id() {
         return caminhao_id;

@@ -5,10 +5,17 @@
  */
 package mtruck.api.daos;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import mtruck.api.dtos.ListaCaminhaoPorViagemDTO;
 import mtruck.api.entities.Viagem;
+import mtruck.api.entities.Caminhao;
 
 /**
  *
@@ -40,5 +47,43 @@ public class ViagemDAO extends DAO<Viagem>{
         v.setData_final(rs.getTimestamp("data_final"));
         
         return v;
+    }
+    
+    @Override
+    public void salvar(Viagem v) throws SQLException {
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "INSERT INTO " + super.TABELA + " (caminhao_id ,carga ,endereco_destino ,endereco_origem ,peso_inicial)"
+                    + " VALUES('" + v.getCaminhao_id()+ "','" + v.getCarga() + "','" + v.getEndereco_destino()+ "','"
+                    + v.getEndereco_origem()+ "'," + v.getPeso_inicial() + ")";
+
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                stmt.execute();
+            }
+        }
+    }
+    
+    public List<ListaCaminhaoPorViagemDTO> listarPorEmpresa(UUID id) throws SQLException{
+        List<ListaCaminhaoPorViagemDTO> caminhoes = new ArrayList();
+
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "select c.id as caminhao_id, c.chassi , c.modelo , c.placa,v.carga ,v.status, v.endereco_destino,"+ 
+                    "v.endereco_origem, v.data_inicial ,v.data_final," +
+                    "v.peso_inicial , v.peso_final, e.nome as empresa_nome from caminhoes c " +
+                         "inner join empresas e on e.id = c.empresa_id " +
+                         "inner join viagens v on v.caminhao_id  = c.id " +
+                         "where e.id = '" + id + "'";
+
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        ListaCaminhaoPorViagemDTO dtoAux = new ListaCaminhaoPorViagemDTO();
+                        ListaCaminhaoPorViagemDTO dto = dtoAux.preencheDTO(rs);
+
+                        caminhoes.add(dto);
+                    }
+                }
+            }
+        }
+        return caminhoes;
     }
 }
