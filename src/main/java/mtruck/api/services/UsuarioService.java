@@ -51,19 +51,34 @@ public class UsuarioService {
         }
     }
 
-    public ResponseLoginDTO login(String email, String senha) throws SQLException {
-            Auditoria a = new Auditoria("Execução de Login");
+    public Usuario pesquisar(UUID id) {
+        Usuario u = null;
+        try {
+            Auditoria a = new Auditoria("Pesquisa de usuário");
             AuditoriaService.getInstancia().adicionaAuditoria(a);
+
+            u = this.usuarioDAO.pesquisar(id);
+
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return u;
+    }
+
+    public ResponseLoginDTO login(String email, String senha) throws SQLException {
+        Auditoria a = new Auditoria("Execução de Login");
+        AuditoriaService.getInstancia().adicionaAuditoria(a);
         Usuario usuario = ((UsuarioDAO) this.usuarioDAO).procuraUsusarioPorUserESenha(email, senha);
 
         UUID userId = usuario.getId();
- 
+
         if (userId != null) {
             PerfilUsuarioDAO perfilDao = new PerfilUsuarioDAO();
             PerfilUsuario perfil = perfilDao.pesquisar(usuario.getPerfil_id());
-            
+
             AuditoriaService.getInstancia().ativar();
-            
+
             return new ResponseLoginDTO(usuario.getNome(), usuario.getNome(), usuario.getEmail(), usuario.getEmpresa_id());
         } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário e senha Invalidos.");

@@ -88,6 +88,14 @@ public class UsuarioController {
         usuario.setId(id);
         uSVC.editar(usuario);
     }
+    
+    @GetMapping("/{id}")
+    public Usuario pesquisar(@PathVariable UUID id){
+        UsuarioDAO uDAO = new UsuarioDAO();
+        UsuarioService uSVC = new UsuarioService(uDAO);
+        
+        return uSVC.pesquisar(id);
+    }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")

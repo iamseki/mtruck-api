@@ -42,8 +42,20 @@ public class EmpresaDAO extends DAO<Empresa> {
     @Override
     public void salvar(Empresa e) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO " + super.TABELA + " (contrato_id,cnpj,sede,data_cadastro)"
-                    + " VALUES('" + e.getContrato_id()+ "','" + e.getCNPJ()+ "','" + e.getSede()+ "','" + e.getData_Cadastro() + "')";
+            String SQL = "INSERT INTO " + super.TABELA + " (contrato_id,cnpj,sede,nome)"
+                    + " VALUES('" + e.getContrato_id()+ "','" + e.getCNPJ()+ "','" + e.getSede()+ "','" + e.getNome()+ "')";
+
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                stmt.execute();
+            }
+        }
+    }
+    
+        public void editar(Empresa e) throws SQLException {
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "UPDATE " + super.TABELA
+                    + " SET cnpj='" + e.getCNPJ()+ "',nome='" + e.getNome()+ "',sede='" + e.getSede()+ "'"
+                    + " WHERE id='" + e.getId().toString() + "'";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 stmt.execute();

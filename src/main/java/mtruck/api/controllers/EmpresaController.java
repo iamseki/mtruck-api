@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,5 +59,22 @@ public class EmpresaController {
         List<Caminhao> caminhoes = svc.listar(empresa_id);
 
         return caminhoes;
+    }
+    
+    @PatchMapping("/{id}")
+    void editar(@RequestBody Empresa e,@PathVariable UUID id){
+        Empresa empresa = e;
+        e.setId(id);
+        EmpresaDAO dao = new EmpresaDAO();
+        EmpresaService service = new EmpresaService(dao);
+        service.editar(empresa);
+    }
+    
+    @GetMapping("/{id}")
+    public Empresa pesquisarEmpresa(@PathVariable UUID id){
+        EmpresaDAO dao = new EmpresaDAO();
+        EmpresaService service = new EmpresaService(dao);
+        
+        return service.pesquisar(id);
     }
 }
