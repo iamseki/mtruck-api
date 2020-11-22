@@ -4,7 +4,14 @@
 
 - Versão do Java: `1.8`
 - Gerenciador de pacotes: `Maven`
-- Ambiente de desenvolvimento: `NetBeans v12.0`
+- IDE: `NetBeans v12.0`
+
+## Endpoints produção :earth:
+
+- API: **`https://mtruck-api.herokuapp.com/`**
+  - Documentação: `https://mtruck-api.herokuapp.com/swagger-ui.html#/`
+  
+- Frontend: **`to do`**
 
 ## Rodando a API localmente :book:
 
