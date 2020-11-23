@@ -38,7 +38,6 @@ public class ViagemDAO extends DAO<Viagem>{
         
         v.setId(UUID.fromString(rs.getString("id")));
         v.setCaminhao_id(UUID.fromString(rs.getString("caminhao_id")));
-        v.setViagem_id(UUID.fromString(rs.getString("viagem_id")));
         v.setStatus(rs.getString("status"));
         v.setEndereco_origem(rs.getString("endereco_origem"));
         v.setEndereco_destino(rs.getString("endereco_destino"));

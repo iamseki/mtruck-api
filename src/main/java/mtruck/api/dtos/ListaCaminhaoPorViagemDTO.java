@@ -60,10 +60,6 @@ public class ListaCaminhaoPorViagemDTO {
         return caminhao_id;
     }
 
-    public UUID getCaminhao_id() {
-        return caminhao_id;
-    }
-
     public String getCarga() {
         return carga;
     }
@@ -121,7 +117,7 @@ public class ListaCaminhaoPorViagemDTO {
         this.caminhao_id = caminhao_id;
     }
 
-    public void setViagem_id(UUID caminhao_id) {
+    public void setViagem_id(UUID viagem_id) {
         this.viagem_id = viagem_id;
     }
 
