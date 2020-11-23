@@ -17,6 +17,7 @@ import java.util.UUID;
 public class ListaCaminhaoPorViagemDTO {
     
     private UUID caminhao_id;
+    private UUID viagem_id;
     private String empresa_nome;
     private String chassi;
     private String modelo;
@@ -38,6 +39,7 @@ public class ListaCaminhaoPorViagemDTO {
         ListaCaminhaoPorViagemDTO dto = new ListaCaminhaoPorViagemDTO();
         
         dto.setCaminhao_id(UUID.fromString(rs.getString("caminhao_id")));
+        dto.setViagem_id(UUID.fromString(rs.getString("viagem_id")));
         dto.setModelo(rs.getString("modelo"));
         dto.setCarga(rs.getString("carga"));
         dto.setChassi(rs.getString("chassi"));
@@ -58,6 +60,10 @@ public class ListaCaminhaoPorViagemDTO {
         return caminhao_id;
     }
 
+    public UUID getCaminhao_id() {
+        return caminhao_id;
+    }
+
     public String getCarga() {
         return carga;
     }
@@ -65,6 +71,11 @@ public class ListaCaminhaoPorViagemDTO {
     public String getChassi() {
         return chassi;
     }
+
+    public UUID getViagem_id() {
+        return viagem_id;
+    }
+
 
     public Date getData_final() {
         return data_final;
@@ -108,6 +119,10 @@ public class ListaCaminhaoPorViagemDTO {
 
     public void setCaminhao_id(UUID caminhao_id) {
         this.caminhao_id = caminhao_id;
+    }
+
+    public void setViagem_id(UUID caminhao_id) {
+        this.viagem_id = viagem_id;
     }
 
     public void setCarga(String carga) {
