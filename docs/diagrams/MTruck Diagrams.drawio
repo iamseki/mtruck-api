@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-11-23T01:02:18.357Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.323" etag="KP0D3oXg62d71CDJnso6" version="13.10.1" type="github" pages="6">
+<mxfile host="app.diagrams.net" modified="2020-11-23T01:08:39.474Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.323" etag="NwlCiElHeKmhPxYN-qdt" version="13.10.1" type="github" pages="7">
   <diagram id="wXPLn4d_kwjciWXKpnca" name="Diagrama de caso de uso">
     <mxGraphModel dx="997" dy="548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -593,6 +593,130 @@
         </mxCell>
         <mxCell id="VM0mK9OK9WGK6YiHi22_-1" value="Mensagem de empresa excluída" style="shape=umlBoundary;whiteSpace=wrap;html=1;" vertex="1" parent="rUsGk-PXknvpMj5PCaF9-1">
           <mxGeometry x="1410" y="1040" width="110" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Diagrama de robustez - edição de operador" id="FtHcHmTGBOF1pLbEt5uu">
+    <mxGraphModel dx="1262" dy="513" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-0" />
+        <mxCell id="l976CaP8sNv8cAN-VlC3-1" parent="l976CaP8sNv8cAN-VlC3-0" />
+        <mxCell id="l976CaP8sNv8cAN-VlC3-2" value="Gerente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="430" y="465" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-3" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="500" as="sourcePoint" />
+            <mxPoint x="660" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-4" value="Tela de listagem de operadores" style="shape=umlBoundary;whiteSpace=wrap;html=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="670" y="450" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-5" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="504.5" as="sourcePoint" />
+            <mxPoint x="930" y="504.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-6" value="Clica em &quot;Edição&quot;&amp;nbsp;&lt;br&gt;na página de listagem" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="l976CaP8sNv8cAN-VlC3-5">
+          <mxGeometry x="-0.3467" y="-1" relative="1" as="geometry">
+            <mxPoint x="21" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-7" value="Carregar informações do operador e exibir tela." style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="940" y="450" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-8" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1040" y="500" as="sourcePoint" />
+            <mxPoint x="1110" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-9" value="Tela de edição de operador" style="shape=umlBoundary;whiteSpace=wrap;html=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="1120" y="450" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-10" value="Exibir mensagem de campo inválido" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="1140" y="650" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-11" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1180" y="550" as="sourcePoint" />
+            <mxPoint x="1180" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-12" value="Edita os dados incorretamente" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="l976CaP8sNv8cAN-VlC3-11">
+          <mxGeometry x="0.3333" relative="1" as="geometry">
+            <mxPoint y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-13" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1180" y="750" as="sourcePoint" />
+            <mxPoint x="1180" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-14" value="Mensagem de campo inválido" style="shape=umlBoundary;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="1120" y="840" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-15" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1250" y="495" as="sourcePoint" />
+            <mxPoint x="1380" y="495" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-16" value="Clica em &quot;Editar&quot;&amp;nbsp;&lt;br&gt;na página de edição &lt;br&gt;de operador" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="l976CaP8sNv8cAN-VlC3-15">
+          <mxGeometry x="-0.3467" y="-1" relative="1" as="geometry">
+            <mxPoint x="21" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-17" value="Exibir mensagem de dados salvos" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="1390" y="450" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-18" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1429.5" y="555" as="sourcePoint" />
+            <mxPoint x="1429.5" y="625" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-19" value="Mensagem de dados salvos" style="shape=umlBoundary;whiteSpace=wrap;html=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="1370" y="640" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-20" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1700" y="685" as="sourcePoint" />
+            <mxPoint x="1830" y="685" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-21" value="Retorna para a tela&lt;br&gt;de listagem de&lt;br&gt;operadores" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="l976CaP8sNv8cAN-VlC3-20">
+          <mxGeometry x="-0.3467" y="-1" relative="1" as="geometry">
+            <mxPoint x="21" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-22" value="Carregar informações da listagem de operadores" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="1840" y="640" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-23" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1879.5" y="740" as="sourcePoint" />
+            <mxPoint x="1879.5" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-24" value="Tela de listagem de operadores" style="shape=umlBoundary;whiteSpace=wrap;html=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="1820" y="825" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-25" value="Operadores" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="1580" y="645" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-26" value="" style="endArrow=classic;html=1;" edge="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1500" y="690" as="sourcePoint" />
+            <mxPoint x="1570" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l976CaP8sNv8cAN-VlC3-27" value="Gerente realiza login" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
+          <mxGeometry x="500" y="481" width="120" height="18" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
