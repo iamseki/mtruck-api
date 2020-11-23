@@ -58,6 +58,13 @@ public class UsuarioController {
         return svc.listarPorEmpresaID(id);
     }
 
+    @GetMapping("{perfil}/{empresa_id}")
+    List<Usuario> listarUsuarioPorEmpresaIDEPerfil(@PathVariable String perfil,@PathVariable UUID empresa_id) {
+        UsuarioDAO dao = new UsuarioDAO();
+        UsuarioService svc = new UsuarioService(dao);
+        return svc.listarPorEmpresaEPerfil(empresa_id, perfil);
+    }
+
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     void cadastrar(@RequestBody Usuario user) {

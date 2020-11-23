@@ -104,4 +104,23 @@ public class UsuarioDAO extends DAO<Usuario> {
         }
         return usuarios;
     }
+
+    public List<Usuario> listarPorEmpresaIDePerfil(UUID id, String perfil) throws SQLException {
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "SELECT * FROM " + TABELA + 
+            " u INNER JOIN perfil_usuario pu on u.perfil_id = pu.id " + 
+            "WHERE LOWER(pu.descricao) like '"+ perfil + "' and u.empresa_id ='"  +  id.toString() + "'";
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        Usuario u = this.preencheEntidade(rs);
+                        usuarios.add(u);
+                    }
+                }
+            }
+        }
+        return usuarios;
+    }
 }

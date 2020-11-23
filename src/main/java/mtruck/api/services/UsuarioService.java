@@ -95,6 +95,16 @@ public class UsuarioService {
         return usuarios;
     }
 
+    public List<Usuario> listarPorEmpresaEPerfil(UUID id, String perfil) {
+        List<Usuario> usuarios = null;
+        try {
+            usuarios = ((UsuarioDAO) this.usuarioDAO).listarPorEmpresaIDePerfil(id, perfil);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuarios;
+    }
+
     public void editar(Usuario u) {
         try {
             Auditoria a = new Auditoria("Edição de user");
