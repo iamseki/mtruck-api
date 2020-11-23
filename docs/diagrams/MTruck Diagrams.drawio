@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-11-23T01:08:39.474Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.323" etag="NwlCiElHeKmhPxYN-qdt" version="13.10.1" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2020-11-23T01:12:19.654Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.323" etag="KuQJDeUoYXPM_E3rRIl6" version="13.10.1" type="github" pages="8">
   <diagram id="wXPLn4d_kwjciWXKpnca" name="Diagrama de caso de uso">
     <mxGraphModel dx="997" dy="548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -717,6 +717,93 @@
         </mxCell>
         <mxCell id="l976CaP8sNv8cAN-VlC3-27" value="Gerente realiza login" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="l976CaP8sNv8cAN-VlC3-1">
           <mxGeometry x="500" y="481" width="120" height="18" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Diagrama de robustez - exclusão de operador" id="tBFLetHEnKB4hOHGiXxt">
+    <mxGraphModel dx="1024" dy="383" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-0" />
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-1" parent="sPWhJ5Qfk9hERBxlRZv4-0" />
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-2" value="Gerente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry x="430" y="465" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-3" value="" style="endArrow=classic;html=1;" edge="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="500" as="sourcePoint" />
+            <mxPoint x="660" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-4" value="Tela de listagem de operadores" style="shape=umlBoundary;whiteSpace=wrap;html=1;" vertex="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry x="670" y="450" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-5" value="" style="endArrow=classic;html=1;" edge="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="504.5" as="sourcePoint" />
+            <mxPoint x="930" y="504.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-6" value="Clica em &quot;Excluir&quot;&amp;nbsp;&lt;br&gt;na página de listagem" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="sPWhJ5Qfk9hERBxlRZv4-5">
+          <mxGeometry x="-0.3467" y="-1" relative="1" as="geometry">
+            <mxPoint x="21" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-7" value="Carregar mensagem de confirmação" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" vertex="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry x="940" y="450" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-8" value="" style="endArrow=classic;html=1;" edge="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="980" y="560" as="sourcePoint" />
+            <mxPoint x="980" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-9" value="Mensagem de confirmação de exclusão de operador" style="shape=umlBoundary;whiteSpace=wrap;html=1;" vertex="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry x="920" y="650" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-10" value="" style="endArrow=classic;html=1;" edge="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1050" y="695" as="sourcePoint" />
+            <mxPoint x="1180" y="695" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-11" value="Clica em &quot;Sim&quot;&amp;nbsp;&lt;br&gt;no pop-up" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="sPWhJ5Qfk9hERBxlRZv4-10">
+          <mxGeometry x="-0.3467" y="-1" relative="1" as="geometry">
+            <mxPoint x="21" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-12" value="Excluir dados do operador" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" vertex="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry x="1190" y="650" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-13" value="" style="endArrow=classic;html=1;" edge="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1229.5" y="755" as="sourcePoint" />
+            <mxPoint x="1229.5" y="825" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-14" value="" style="endArrow=classic;html=1;" edge="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1280" y="879.5" as="sourcePoint" />
+            <mxPoint x="1410" y="879.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-15" value="Carregar mensagem de operador excluído" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" vertex="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry x="1430" y="840" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-16" value="Operadores" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" vertex="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry x="1190" y="840" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-17" value="Gerente realiza login" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry x="500" y="481" width="120" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-18" value="" style="endArrow=classic;html=1;" edge="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1470" y="950" as="sourcePoint" />
+            <mxPoint x="1470" y="1020" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sPWhJ5Qfk9hERBxlRZv4-19" value="Mensagem de operador excluído" style="shape=umlBoundary;whiteSpace=wrap;html=1;" vertex="1" parent="sPWhJ5Qfk9hERBxlRZv4-1">
+          <mxGeometry x="1410" y="1040" width="110" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
