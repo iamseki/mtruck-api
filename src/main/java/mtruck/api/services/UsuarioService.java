@@ -107,4 +107,17 @@ public class UsuarioService {
             Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void deletar(UUID id){
+        try {
+            Auditoria a = new Auditoria("Remoção de usuario");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+
+            this.usuarioDAO.deletar(id);
+
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

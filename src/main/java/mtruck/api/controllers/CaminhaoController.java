@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -63,4 +64,12 @@ public class CaminhaoController {
         c.setId(id);
         svc.editar(c);
     } 
+
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    void deletar(@PathVariable UUID id) {
+        CaminhaoDAO caminhaoDAO = new CaminhaoDAO();
+        CaminhaoService svc = new CaminhaoService(caminhaoDAO);
+        svc.deletar(id);
+    }
 }

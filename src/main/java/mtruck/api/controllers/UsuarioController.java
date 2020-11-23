@@ -100,6 +100,9 @@ public class UsuarioController {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     void deletar(@PathVariable UUID id) {
-
+        UsuarioDAO uDAO = new UsuarioDAO();
+        UsuarioService uSVC = new UsuarioService(uDAO);
+        
+        uSVC.deletar(id);
     }
 }

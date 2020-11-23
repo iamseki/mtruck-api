@@ -98,4 +98,16 @@ public class CaminhaoService {
             Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
         }
        }
+       public void deletar(UUID id){
+        try {
+            Auditoria a = new Auditoria("Remoção de usuario");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+
+            this.caminhaoDAO.deletar(id);
+
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
