@@ -30,7 +30,7 @@ public abstract class DAO<E> {
     }
 
     public List<E> listar() throws SQLException {
-        ArrayList<E> entidades = new ArrayList();
+        ArrayList<E> entidades = new ArrayList<E>();
 
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "SELECT * FROM " + TABELA;

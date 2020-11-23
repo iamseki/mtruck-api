@@ -23,7 +23,7 @@ import mtruck.api.entities.Caminhao;
 public class CaminhaoService {
     private final DAO<Caminhao> caminhaoDAO ;
     
-    public CaminhaoService(DAO dao){
+    public CaminhaoService(DAO<Caminhao> dao){
         this.caminhaoDAO = dao;
     }
     

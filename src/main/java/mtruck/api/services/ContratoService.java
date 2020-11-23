@@ -22,7 +22,7 @@ public class ContratoService {
 
     private final DAO<Contrato> contratoDAO;
 
-    public ContratoService(DAO dao) {
+    public ContratoService(DAO<Contrato> dao) {
         this.contratoDAO = dao;
     }
 

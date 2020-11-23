@@ -24,7 +24,7 @@ public class DatalogService {
 
     private final DAO<Datalog> datalogDAO;
 
-    public DatalogService(DAO dao) {
+    public DatalogService(DAO<Datalog> dao) {
         this.datalogDAO = dao;
     }
 

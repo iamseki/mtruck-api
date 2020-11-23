@@ -10,7 +10,6 @@ import java.util.UUID;
 import mtruck.api.daos.ViagemDAO;
 import mtruck.api.dtos.ListaCaminhaoPorViagemDTO;
 import mtruck.api.entities.Viagem;
-import mtruck.api.entities.Caminhao;
 import mtruck.api.services.ViagemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;

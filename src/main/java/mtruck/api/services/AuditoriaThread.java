@@ -20,7 +20,7 @@ public class AuditoriaThread extends Thread{
     private final DAO<Auditoria> auditoriaDAO ;
     private boolean status;
     
-    public AuditoriaThread(DAO dao){
+    public AuditoriaThread(DAO<Auditoria> dao){
         this.auditoriaDAO = dao;
     }
     

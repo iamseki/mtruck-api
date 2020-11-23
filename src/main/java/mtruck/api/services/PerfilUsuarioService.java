@@ -22,7 +22,7 @@ public class PerfilUsuarioService {
 
     private final DAO<PerfilUsuario> usuarioPerfilDAO;
 
-    public PerfilUsuarioService(DAO dao) {
+    public PerfilUsuarioService(DAO<PerfilUsuario> dao) {
         this.usuarioPerfilDAO = dao;
     }
 

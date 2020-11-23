@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.UUID;
 import mtruck.api.dtos.ListaCaminhaoPorViagemDTO;
 import mtruck.api.entities.Viagem;
-import mtruck.api.entities.Caminhao;
 
 /**
  *
@@ -63,7 +62,7 @@ public class ViagemDAO extends DAO<Viagem>{
     }
     
     public List<ListaCaminhaoPorViagemDTO> listarPorEmpresa(UUID id) throws SQLException{
-        List<ListaCaminhaoPorViagemDTO> caminhoes = new ArrayList();
+        List<ListaCaminhaoPorViagemDTO> caminhoes = new ArrayList<ListaCaminhaoPorViagemDTO>();
 
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "select c.id as caminhao_id, v.id as viagem_id, c.chassi , c.modelo , c.placa,v.carga ,v.status, v.endereco_destino,"+ 

@@ -11,7 +11,6 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mtruck.api.entities.Viagem;
-import mtruck.api.entities.Caminhao;
 import mtruck.api.daos.DAO;
 import mtruck.api.daos.ViagemDAO;
 import mtruck.api.dtos.ListaCaminhaoPorViagemDTO;
@@ -25,7 +24,7 @@ public class ViagemService {
 
     private final DAO<Viagem> viagemDao;
 
-    public ViagemService(DAO dao) {
+    public ViagemService(DAO<Viagem> dao) {
         this.viagemDao = dao;
     }
 

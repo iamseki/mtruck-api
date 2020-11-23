@@ -56,7 +56,7 @@ public class CaminhaoDAO extends DAO<Caminhao>{
     }
     
      public List<Caminhao> listaPorEmpresaId(UUID empresa_id) throws SQLException{
-       ArrayList<Caminhao> caminhoes = new ArrayList();
+       ArrayList<Caminhao> caminhoes = new ArrayList<Caminhao>();
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "SELECT * FROM " + TABELA + " WHERE empresa_id='" + empresa_id.toString() +"'";
 

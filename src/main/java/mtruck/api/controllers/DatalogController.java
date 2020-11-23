@@ -5,7 +5,6 @@
  */
 package mtruck.api.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import mtruck.api.daos.DatalogDAO;
 import mtruck.api.entities.Datalog;

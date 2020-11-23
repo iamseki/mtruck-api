@@ -24,7 +24,7 @@ public class EmpresaService {
 
     private final DAO<Empresa> empresaDAO;
 
-    public EmpresaService(DAO dao) {
+    public EmpresaService(DAO<Empresa> dao) {
         this.empresaDAO = dao;
     }
 

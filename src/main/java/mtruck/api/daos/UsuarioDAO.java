@@ -89,7 +89,7 @@ public class UsuarioDAO extends DAO<Usuario> {
     }
 
     public List<Usuario> listarPorEmpresaID(UUID id) throws SQLException {
-        ArrayList<Usuario> usuarios = new ArrayList();
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "SELECT * FROM " + TABELA + " WHERE empresa_id='" + id.toString() + "'";

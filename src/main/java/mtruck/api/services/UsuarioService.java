@@ -28,7 +28,7 @@ public class UsuarioService {
 
     private final DAO<Usuario> usuarioDAO;
 
-    public UsuarioService(DAO dao) {
+    public UsuarioService(DAO<Usuario> dao) {
         this.usuarioDAO = dao;
     }
 
@@ -79,7 +79,7 @@ public class UsuarioService {
 
             AuditoriaService.getInstancia().ativar();
 
-            return new ResponseLoginDTO(usuario.getNome(), usuario.getNome(), usuario.getEmail(), usuario.getEmpresa_id());
+            return new ResponseLoginDTO(perfil.getDescricao(), usuario.getNome(), usuario.getEmail(), usuario.getEmpresa_id());
         } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário e senha Invalidos.");
         }
