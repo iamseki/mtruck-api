@@ -83,4 +83,17 @@ public class EmpresaService {
         }
         return e;
     }
+
+    public void deletar(UUID id){
+        try {
+            Auditoria a = new Auditoria("Remoção de usuario");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+
+            this.empresaDAO.deletar(id);
+
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

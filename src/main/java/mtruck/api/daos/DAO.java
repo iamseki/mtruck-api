@@ -46,6 +46,14 @@ public abstract class DAO<E> {
         return entidades;
     }
     
+    public void deletar(UUID id) throws SQLException {
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "DELETE FROM "+ TABELA +" WHERE id = '" +id +"'";
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                stmt.execute();
+            }
+        }
+    }
   
     public E pesquisar(UUID id) throws SQLException {
         E entidade = null;
