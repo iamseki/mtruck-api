@@ -38,6 +38,7 @@ public class ViagemDAO extends DAO<Viagem>{
         
         v.setId(UUID.fromString(rs.getString("id")));
         v.setCaminhao_id(UUID.fromString(rs.getString("caminhao_id")));
+        v.setViagem_id(UUID.fromString(rs.getString("viagem_id")));
         v.setStatus(rs.getString("status"));
         v.setEndereco_origem(rs.getString("endereco_origem"));
         v.setEndereco_destino(rs.getString("endereco_destino"));
@@ -66,7 +67,7 @@ public class ViagemDAO extends DAO<Viagem>{
         List<ListaCaminhaoPorViagemDTO> caminhoes = new ArrayList();
 
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "select c.id as caminhao_id, c.chassi , c.modelo , c.placa,v.carga ,v.status, v.endereco_destino,"+ 
+            String SQL = "select c.id as caminhao_id, v.id as viagem_id, c.chassi , c.modelo , c.placa,v.carga ,v.status, v.endereco_destino,"+ 
                     "v.endereco_origem, v.data_inicial ,v.data_final," +
                     "v.peso_inicial , v.peso_final, e.nome as empresa_nome from caminhoes c " +
                          "inner join empresas e on e.id = c.empresa_id " +
