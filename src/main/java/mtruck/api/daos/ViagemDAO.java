@@ -135,7 +135,7 @@ public class ViagemDAO extends DAO<Viagem>{
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "UPDATE " + super.TABELA
                     + " SET status='" + v.getStatus() +
-                    " WHERE id='" + v.getId().toString() + "'";
+                    "' WHERE id='" + v.getId().toString() + "'";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 stmt.execute();
