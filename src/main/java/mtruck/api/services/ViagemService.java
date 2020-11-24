@@ -72,4 +72,19 @@ public class ViagemService {
             Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public Viagem pesquisar(UUID id) {
+        Viagem v = null;
+        try {
+            Auditoria a = new Auditoria("Pesquisa de usuário");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+
+            v = this.viagemDao.pesquisar(id);
+
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return v;
+    }
 }
