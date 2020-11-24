@@ -48,6 +48,27 @@ public class ViagemDAO extends DAO<Viagem>{
         v.setDestino_lng(rs.getFloat("destino_lng"));
         v.setOrigem_lng(rs.getFloat("origem_lng"));
         v.setOrigem_lat(rs.getFloat("origem_lat"));
+        
+        return v;
+    }
+
+    Viagem preencheEntidadeComPlaca(ResultSet rs) throws SQLException {
+        Viagem v = new Viagem();
+        
+        v.setId(UUID.fromString(rs.getString("id")));
+        v.setCaminhao_id(UUID.fromString(rs.getString("caminhao_id")));
+        v.setStatus(rs.getString("status"));
+        v.setEndereco_origem(rs.getString("endereco_origem"));
+        v.setEndereco_destino(rs.getString("endereco_destino"));
+        v.setPeso_final(rs.getFloat("peso_final"));
+        v.setPeso_inicial(rs.getFloat("peso_inicial"));
+        v.setData_inicial(rs.getTimestamp("data_inicial"));
+        v.setData_final(rs.getTimestamp("data_final"));
+        v.setDestino_lat(rs.getFloat("destino_lat"));
+        v.setDestino_lng(rs.getFloat("destino_lng"));
+        v.setOrigem_lng(rs.getFloat("origem_lng"));
+        v.setOrigem_lat(rs.getFloat("origem_lat"));
+        
         v.setPlaca(rs.getString("placa"));
         
         return v;
@@ -102,7 +123,7 @@ public class ViagemDAO extends DAO<Viagem>{
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()) {
-                        viagem = this.preencheEntidade(rs);
+                        viagem = this.preencheEntidadeComPlaca(rs);
                     }
                 }
             }
