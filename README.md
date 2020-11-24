@@ -35,16 +35,3 @@ Para rodar a API localmente em **`localhost:8080`**
 - Se estiver em um ambiente linux com a engine docker, execute o seguinte comando para inicializar o banco em um container:
 
       docker run --name mtruck-pg -p 5432:5432 -e POSTGRES_DB=lp2 -e POSTGRES_PASSWORD=admin -d postgres:alpine
-
-## Auditoria com threads :file_folder:
-
-Criamos dois serviços que executam a thread responsável pela auditoria das rotas, sendo eles: 
-  - [AuditoriaService](./src/main/java/mtruck/api/services/AuditoriaService.java)
-  - [AuditoriaThread](src/main/java/mtruck/api/services/AuditoriaThread.java)         
-
->e.g auditoria do endpoint **[/datalog](src/main/java/mtruck/api/services/DatalogService.java)**
-
-
-## Acesso à documentação :books:
-
-- Rode a API localmente e acesse o endpoint: `http://localhost:8080/swagger-ui.html#/`
