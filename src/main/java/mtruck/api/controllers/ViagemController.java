@@ -13,6 +13,7 @@ import mtruck.api.entities.Viagem;
 import mtruck.api.services.ViagemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +45,7 @@ public class ViagemController {
         ViagemDAO vDAO = new ViagemDAO();
         ViagemService svc = new ViagemService(vDAO);
         
-        return svc.pesquisar(id);
+        return svc.pesquisarComCaminhao(id);
     }
 
     @GetMapping("empresa/{id}")
@@ -62,5 +63,13 @@ public class ViagemController {
         ViagemDAO vDAO = new ViagemDAO();
         ViagemService svc = new ViagemService(vDAO);
         svc.salvar(v);
+    }
+
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    void deletar(@PathVariable UUID id) {
+        ViagemDAO vDAO = new ViagemDAO();
+        ViagemService svc = new ViagemService(vDAO);
+        svc.deletar(id);
     }
 }

@@ -79,6 +79,21 @@ public class ViagemService {
             Auditoria a = new Auditoria("Pesquisa de usuário");
             AuditoriaService.getInstancia().adicionaAuditoria(a);
 
+            v = ((ViagemDAO) this.viagemDao).pesquisarComCaminhao(id);
+
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return v;
+    }
+
+    public Viagem pesquisarComCaminhao(UUID id) {
+        Viagem v = null;
+        try {
+            Auditoria a = new Auditoria("Pesquisa de usuário");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+
             v = this.viagemDao.pesquisar(id);
 
             AuditoriaService.getInstancia().ativar();
@@ -86,5 +101,18 @@ public class ViagemService {
             Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return v;
+    }
+
+    public void deletar(UUID id){
+        try {
+            Auditoria a = new Auditoria("Remoção de viagem");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+
+            this.viagemDao.deletar(id);
+
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

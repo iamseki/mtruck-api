@@ -15,6 +15,7 @@ import java.util.UUID;
 public class Viagem {
     private UUID id;
     private UUID caminhao_id;
+    private String placa;
     private String carga;
     private String status;
     private String endereco_origem;
@@ -29,7 +30,7 @@ public class Viagem {
     private float origem_lng;
 
     public Viagem(UUID id, UUID caminhao_id,String carga, String status, String endereco_origem, String endereco_destino, float peso_inicial, float peso_final, Date data_inicial, Date data_final, 
-    float destino_lng, float destino_lat, float origem_lng, float origem_lat) {
+    float destino_lng, float destino_lat, float origem_lng, float origem_lat, String placa) {
         this.id = id;
         this.caminhao_id = caminhao_id;
         this.status = status;
@@ -44,6 +45,7 @@ public class Viagem {
         this.origem_lng = origem_lng;
         this.destino_lat = destino_lat;
         this.destino_lng = destino_lng;
+        this.placa = placa;
     }
 
     public Viagem() {
@@ -57,6 +59,14 @@ public class Viagem {
         return carga;
     }
   
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
 
     public UUID getCaminhao_id() {
         return caminhao_id;

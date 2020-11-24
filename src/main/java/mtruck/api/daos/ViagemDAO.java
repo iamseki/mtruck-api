@@ -48,6 +48,7 @@ public class ViagemDAO extends DAO<Viagem>{
         v.setDestino_lng(rs.getFloat("destino_lng"));
         v.setOrigem_lng(rs.getFloat("origem_lng"));
         v.setOrigem_lat(rs.getFloat("origem_lat"));
+        v.setPlaca(rs.getString("placa"));
         
         return v;
     }
@@ -88,5 +89,24 @@ public class ViagemDAO extends DAO<Viagem>{
             }
         }
         return caminhoes;
+    }
+
+    public Viagem pesquisarComCaminhao(UUID id) throws SQLException {
+        Viagem viagem = null;
+
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "SELECT * FROM " + TABELA +  
+            " v INNER JOIN caminhoes c on c.id = v.caminhao_id WHERE v.id='" + id + "'";
+
+            System.out.println("[Pesquisar] - SQL: " + SQL);
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        viagem = this.preencheEntidade(rs);
+                    }
+                }
+            }
+        } 
+        return viagem;
     }
 }
