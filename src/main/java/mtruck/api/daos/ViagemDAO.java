@@ -55,9 +55,9 @@ public class ViagemDAO extends DAO<Viagem>{
     @Override
     public void salvar(Viagem v) throws SQLException {
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = "INSERT INTO " + super.TABELA + " (caminhao_id ,carga ,endereco_destino ,endereco_origem ,peso_inicial)"
+            String SQL = "INSERT INTO " + super.TABELA + " (caminhao_id ,carga ,endereco_destino ,endereco_origem ,peso_inicial, destino_lat,destino_lng, origem_lat,origem_lng)"
                     + " VALUES('" + v.getCaminhao_id()+ "','" + v.getCarga() + "','" + v.getEndereco_destino()+ "','"
-                    + v.getEndereco_origem()+ "'," + v.getPeso_inicial() + ")";
+                    + v.getEndereco_origem()+ "'," + v.getPeso_inicial() + "," + v.getDestino_lat() + "," + v.getDestino_lng() + "," + v.getOrigem_lat() + "," + v.getOrigem_lng() + ")";
 
             try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
                 stmt.execute();
