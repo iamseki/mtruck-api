@@ -11,7 +11,6 @@
 - Documentação API padrão `OpenAPI`: https://mtruck-api.herokuapp.com/swagger-ui.html#/
 - FrontEnd: https://mtruck-frontend.herokuapp.com 
 
-
 ## Rodando a API localmente :book:
 
 Para rodar a API localmente em **`localhost:8080`**
