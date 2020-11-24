@@ -79,7 +79,7 @@ public class ViagemService {
             Auditoria a = new Auditoria("Pesquisa de usuário");
             AuditoriaService.getInstancia().adicionaAuditoria(a);
 
-            v = ((ViagemDAO) this.viagemDao).pesquisarComCaminhao(id);
+            v = ((ViagemDAO) this.viagemDao).pesquisar(id);
 
             AuditoriaService.getInstancia().ativar();
         } catch (SQLException ex) {
@@ -94,7 +94,7 @@ public class ViagemService {
             Auditoria a = new Auditoria("Pesquisa de usuário");
             AuditoriaService.getInstancia().adicionaAuditoria(a);
 
-            v = this.viagemDao.pesquisar(id);
+            v = ((ViagemDAO) this.viagemDao).pesquisarComCaminhao(id);
 
             AuditoriaService.getInstancia().ativar();
         } catch (SQLException ex) {
