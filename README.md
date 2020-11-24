@@ -6,12 +6,11 @@
 - Gerenciador de pacotes: `Maven`
 - IDE: `NetBeans v12.0`
 
-## Endpoints produção :earth:
+## Acesso ao ambiente de produção :earth_americas:
 
-- API: **`https://mtruck-api.herokuapp.com/`**
-  - Documentação: `https://mtruck-api.herokuapp.com/swagger-ui.html#/`
-  
-- Frontend: **`to do`**
+- Documentação API padrão `OpenAPI`: https://mtruck-api.herokuapp.com/swagger-ui.html#/
+- FrontEnd: https://mtruck-frontend.herokuapp.com 
+
 
 ## Rodando a API localmente :book:
 
