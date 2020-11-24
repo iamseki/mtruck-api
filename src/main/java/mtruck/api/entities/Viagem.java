@@ -23,8 +23,13 @@ public class Viagem {
     private float peso_final;
     private Date data_inicial;
     private Date data_final;
+    private float destino_lat;
+    private float destino_lng;
+    private float origem_lat;
+    private float origem_lng;
 
-    public Viagem(UUID id, UUID caminhao_id,String carga, String status, String endereco_origem, String endereco_destino, float peso_inicial, float peso_final, Date data_inicial, Date data_final) {
+    public Viagem(UUID id, UUID caminhao_id,String carga, String status, String endereco_origem, String endereco_destino, float peso_inicial, float peso_final, Date data_inicial, Date data_final, 
+    float destino_lng, float destino_lat, float origem_lng, float origem_lat) {
         this.id = id;
         this.caminhao_id = caminhao_id;
         this.status = status;
@@ -35,6 +40,10 @@ public class Viagem {
         this.data_inicial = data_inicial;
         this.data_final = data_final;
         this.carga = carga;
+        this.origem_lat = origem_lat;
+        this.origem_lng = origem_lng;
+        this.destino_lat = destino_lat;
+        this.destino_lng = destino_lng;
     }
 
     public Viagem() {
@@ -103,6 +112,37 @@ public class Viagem {
 
     public void setEndereco_origem(String endereco_origem) {
         this.endereco_origem = endereco_origem;
+    }
+
+    public void setDestino_lat(float destino_lat) {
+        this.destino_lat = destino_lat;
+    }
+    public void setDestino_lng(float destino_lng) {
+        this.destino_lng = destino_lng;
+    }
+
+    public void setOrigem_lat(float origem_lat) {
+        this.origem_lat = origem_lat;
+    }
+
+    public void setOrigem_lng(float origem_lng) {
+        this.origem_lng = origem_lng;
+    }
+
+    public float getDestino_lat() {
+        return destino_lat;
+    }
+
+    public float getDestino_lng() {
+        return destino_lng;
+    }
+
+    public float getOrigem_lat() {
+        return origem_lat;
+    }
+
+    public float getOrigem_lng() {
+        return origem_lng;
     }
 
     public void setId(UUID id) {

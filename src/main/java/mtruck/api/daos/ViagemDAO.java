@@ -44,6 +44,10 @@ public class ViagemDAO extends DAO<Viagem>{
         v.setPeso_inicial(rs.getFloat("peso_inicial"));
         v.setData_inicial(rs.getTimestamp("data_inicial"));
         v.setData_final(rs.getTimestamp("data_final"));
+        v.setDestino_lat(rs.getFloat("destino_lat"));
+        v.setDestino_lng(rs.getFloat("destino_lng"));
+        v.setOrigem_lng(rs.getFloat("origem_lng"));
+        v.setOrigem_lat(rs.getFloat("origem_lat"));
         
         return v;
     }
@@ -66,7 +70,7 @@ public class ViagemDAO extends DAO<Viagem>{
 
         try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = "select c.id as caminhao_id, v.id as viagem_id, c.chassi , c.modelo , c.placa,v.carga ,v.status, v.endereco_destino,"+ 
-                    "v.endereco_origem, v.data_inicial ,v.data_final," +
+                    "v.endereco_origem, v.data_inicial ,v.data_final,v.origem_lat, v.origem_lng, v.destino_lat, v.destino_lng," +
                     "v.peso_inicial , v.peso_final, e.nome as empresa_nome from caminhoes c " +
                          "inner join empresas e on e.id = c.empresa_id " +
                          "inner join viagens v on v.caminhao_id  = c.id " +
