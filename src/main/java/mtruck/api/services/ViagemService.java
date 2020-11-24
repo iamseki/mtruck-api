@@ -115,4 +115,17 @@ public class ViagemService {
             Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void editar(Viagem v) {
+        try {
+            Auditoria a = new Auditoria("Edição de viagem");
+            AuditoriaService.getInstancia().adicionaAuditoria(a);
+
+            ((ViagemDAO) this.viagemDao).editar(v);
+
+            AuditoriaService.getInstancia().ativar();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatalogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

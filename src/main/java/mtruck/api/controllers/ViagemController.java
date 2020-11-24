@@ -72,4 +72,14 @@ public class ViagemController {
         ViagemService svc = new ViagemService(vDAO);
         svc.deletar(id);
     }
+
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    @PatchMapping("/{id}")
+    void editar(@RequestBody Viagem viagem, @PathVariable UUID id) {
+        Viagem v = viagem;
+        v.setId(id);
+        ViagemDAO vDAO = new ViagemDAO();
+        ViagemService svc = new ViagemService(vDAO);
+        svc.editar(v);
+    }
 }
