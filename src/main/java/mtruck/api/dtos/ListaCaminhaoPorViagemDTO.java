@@ -30,6 +30,10 @@ public class ListaCaminhaoPorViagemDTO {
     private Date data_final;
     private float peso_inicial;
     private float peso_final;
+    private float destino_lat;
+    private float destino_lng;
+    private float origem_lat;
+    private float origem_lng;
     
     public ListaCaminhaoPorViagemDTO(){}
     
@@ -49,6 +53,10 @@ public class ListaCaminhaoPorViagemDTO {
         dto.setEndereco_origem(rs.getString("endereco_origem"));
         dto.setPeso_final(rs.getFloat("peso_final"));
         dto.setPeso_inicial(rs.getFloat("peso_inicial"));
+        dto.setDestino_lat(rs.getFloat("destino_lat"));
+        dto.setDestino_lng(rs.getFloat("destino_lng"));
+        dto.setOrigem_lng(rs.getFloat("origem_lng"));
+        dto.setOrigem_lat(rs.getFloat("origem_lat"));
         dto.setData_final(rs.getTimestamp("data_final"));
         dto.setData_inicial(rs.getTimestamp("data_inicial"));
         
@@ -71,6 +79,7 @@ public class ListaCaminhaoPorViagemDTO {
     public UUID getViagem_id() {
         return viagem_id;
     }
+
 
 
     public Date getData_final() {
@@ -99,6 +108,22 @@ public class ListaCaminhaoPorViagemDTO {
 
     public float getPeso_final() {
         return peso_final;
+    }
+
+    public float getDestino_lat() {
+        return destino_lat;
+    }
+
+    public float getDestino_lng() {
+        return destino_lng;
+    }
+
+    public float getOrigem_lat() {
+        return origem_lat;
+    }
+
+    public float getOrigem_lng() {
+        return origem_lng;
     }
 
     public float getPeso_inicial() {
@@ -159,6 +184,21 @@ public class ListaCaminhaoPorViagemDTO {
 
     public void setPeso_inicial(float peso_inicial) {
         this.peso_inicial = peso_inicial;
+    }
+
+    public void setDestino_lat(float destino_lat) {
+        this.destino_lat = destino_lat;
+    }
+    public void setDestino_lng(float destino_lng) {
+        this.destino_lng = destino_lng;
+    }
+
+    public void setOrigem_lat(float origem_lat) {
+        this.origem_lat = origem_lat;
+    }
+
+    public void setOrigem_lng(float origem_lng) {
+        this.origem_lng = origem_lng;
     }
 
     public void setPlaca(String placa) {
