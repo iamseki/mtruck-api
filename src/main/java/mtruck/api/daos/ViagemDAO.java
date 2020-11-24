@@ -68,8 +68,8 @@ public class ViagemDAO extends DAO<Viagem>{
         v.setDestino_lng(rs.getFloat("destino_lng"));
         v.setOrigem_lng(rs.getFloat("origem_lng"));
         v.setOrigem_lat(rs.getFloat("origem_lat"));
-        
         v.setPlaca(rs.getString("placa"));
+        v.setCarga(rs.getString("carga"));
         
         return v;
     }
